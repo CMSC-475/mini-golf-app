@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MiniGolfApp">
-        <activity android:name="com.gooey_group.minigolfapp.MainActivity">
+        <activity android:name=".EndGameActivity"></activity>
+        <activity android:name=".ScoreboardActivity" />
+        <activity android:name=".NewGameActivity" />
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
