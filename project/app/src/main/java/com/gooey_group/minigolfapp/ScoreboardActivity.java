@@ -2,6 +2,7 @@ package com.gooey_group.minigolfapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.InputType;
@@ -9,6 +10,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.TableLayout;
@@ -22,6 +24,9 @@ import static com.gooey_group.minigolfapp.R.id.score_tbl;
 public class ScoreboardActivity extends AppCompatActivity {
 
     TableLayout scoreboard;
+    int numPlayers = 1;
+    int numHoles = 18;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,11 +36,18 @@ public class ScoreboardActivity extends AppCompatActivity {
 
         setupTable();
 
+
+        Button endGameBtn = findViewById(R.id.end_game_btn);
+        endGameBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ScoreboardActivity.this, EndGameActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public void setupTable(){
-
-        int numHoles = 9;
 
         TableRow nameRow = new TableRow(this);
         TableRow.LayoutParams lp = new TableRow.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -52,7 +64,7 @@ public class ScoreboardActivity extends AppCompatActivity {
         hole_lbl.setLayoutParams(headerLayout);
 
         TextView name_lbl = new TextView(this);
-        name_lbl.setText("Name");
+        name_lbl.setText("Player 1");
         name_lbl.setTypeface(null, Typeface.BOLD);
         name_lbl.setGravity(Gravity.CENTER);
         nameRow.addView(name_lbl);
@@ -63,7 +75,7 @@ public class ScoreboardActivity extends AppCompatActivity {
         ViewGroup.LayoutParams cellLayout = headerLayout;
         cellLayout.height = 100;
 
-        for(int i = 1; i <= numHoles; i++) {
+        for(int i = 1; i <= numHoles; i++) { //numHoles = num rows
 
                 TableRow tr = new TableRow(this);
                 tr.setLayoutParams(lp);
@@ -76,26 +88,35 @@ public class ScoreboardActivity extends AppCompatActivity {
 
         }
 
-
+        setupScoreInputs();
     }
 
-    public void setupTableRow(){
-        /* int numPlayers = 2;
-        for (int i = 0; i<numPlayers; i++){
-            View view = scoreboard.getChildAt(i);
+    public void setupScoreInputs(){
+
+        for (int i = 1; i<= numHoles; i++){
+            View view = scoreboard.getChildAt(i); // a row
             if (view instanceof TableRow) {
+
                 TableRow row = (TableRow) view;
-                if( something you want to check ) {
-                    table.removeViewAt(i);
-                    // or...
-                    table.removeView(row);
+
+                for(int j = 0; j< numPlayers; j++){
+
+                    EditText scoreInput = new EditText(this);
+                    scoreInput.setInputType(InputType.TYPE_CLASS_NUMBER);
+
+                    row.addView(scoreInput);
+
+                    ViewGroup.LayoutParams inputLayout = scoreInput.getLayoutParams();
+                    inputLayout.width = 150;
+                    scoreInput.setLayoutParams(inputLayout);
+
                 }
 
 
             }
         }
 
-         */
+
 
 
         /*
