@@ -37,7 +37,7 @@ public class ScoreboardActivity extends AppCompatActivity {
 
         dummyGame.players[0].points[0] = 1;
         dummyGame.players[0].points[1] = 2;
-
+        dummyGame.players[0].totalScore = 3;
         scoreboard = findViewById(score_tbl);
 
         setupTable();

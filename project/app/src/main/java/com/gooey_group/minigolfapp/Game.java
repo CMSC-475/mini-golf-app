@@ -1,6 +1,9 @@
 package com.gooey_group.minigolfapp;
 
+import android.text.InputType;
+
 import java.io.Serializable;
+import java.util.Arrays;
 
 public class Game implements Serializable {
     String boardName;
@@ -18,10 +21,11 @@ public class Game implements Serializable {
         boardName = name;
         this.numHoles = numHoles;
         this.numPlayers = numPlayers;
-        Player[] players = new Player[numPlayers];
+        players = new Player[numPlayers];
 
         for(int i = 0; i < players.length; i++) {
             players[i] = new Player(numHoles);
+
         }
 
         //todo: implement time later 
