@@ -10,7 +10,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class NewGameActivity extends AppCompatActivity {
-//    Game newGame;
     int numPlayers, numHoles;
     String boardName;
     TextView display;
@@ -20,7 +19,7 @@ public class NewGameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_game);
 
-        numPlayers = 4;
+        numPlayers = 2;
         Button plus = (Button) findViewById(R.id.addbtn);
         Button minus = (Button) findViewById(R.id.minusbtn);
         display = (TextView) findViewById(R.id.playertxt);
@@ -28,7 +27,7 @@ public class NewGameActivity extends AppCompatActivity {
 
         boardName = name.getText().toString();
 
-        //display.setText(numPlayers); //u need to use integer.tostring for numbers
+        display.setText(Integer.toString(numPlayers)); //u need to use integer.tostring for numbers
 
 
         /*
@@ -67,14 +66,16 @@ public class NewGameActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(numPlayers == 0){
-                    display.setText(numPlayers);
+                    display.setText(Integer.toString(numPlayers));
                 }//end if
                 else{
                     numPlayers = numPlayers - 1;
-                    display.setText(numPlayers);
+                    display.setText(Integer.toString(numPlayers));
                 }
             }
         });
+
+        Game dummyGame = new Game(boardName, numPlayers, numHoles);
 
 
         //BUTTON for Creating the game
@@ -83,6 +84,7 @@ public class NewGameActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(NewGameActivity.this, ScoreboardActivity.class);
+                intent.putExtra("GameInfo", dummyGame);
                 startActivity(intent);
             }
         });
