@@ -1,6 +1,8 @@
 package com.gooey_group.minigolfapp;
 
-public class Game {
+import java.io.Serializable;
+
+public class Game implements Serializable {
     String boardName;
     int numPlayers;
     int numHoles;

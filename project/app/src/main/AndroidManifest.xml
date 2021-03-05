@@ -9,11 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MiniGolfApp">
-        <activity android:name=".EndGameActivity"></activity>
+        <activity android:name=".EndGameActivity"
+            android:exported="true"
+        />
         <activity android:name=".ScoreboardActivity"
             android:exported="true"
         />
-        <activity android:name=".NewGameActivity" />
+        <activity android:name=".NewGameActivity"
+            android:exported="true"
+        />
         <activity android:name=".MainActivity">
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar">
             <intent-filter>

@@ -28,7 +28,7 @@ public class NewGameActivity extends AppCompatActivity {
 
         boardName = name.getText().toString();
 
-        display.setText(numPlayers);
+        //display.setText(numPlayers); //u need to use integer.tostring for numbers
 
 
         /*

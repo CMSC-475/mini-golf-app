@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.text.InputType;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -25,12 +26,17 @@ public class ScoreboardActivity extends AppCompatActivity {
 
     TableLayout scoreboard;
     int numPlayers = 1;
-    int numHoles = 18;
+    int numHoles = 9;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scoreboard);
+
+        Game dummyGame  = new Game("boardname", 1, 9);
+
+        dummyGame.players[0].points[0] = 1;
+        dummyGame.players[0].points[1] = 2;
 
         scoreboard = findViewById(score_tbl);
 
@@ -41,7 +47,10 @@ public class ScoreboardActivity extends AppCompatActivity {
         endGameBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //
+                // endGame();
                 Intent intent = new Intent(ScoreboardActivity.this, EndGameActivity.class);
+                intent.putExtra("GameInfo", dummyGame);
                 startActivity(intent);
             }
         });
@@ -115,14 +124,29 @@ public class ScoreboardActivity extends AppCompatActivity {
 
             }
         }
+    }
+
+    public void endGame(){
+        for (int i = 1; i<= numHoles; i++){ //iterates rows
+            View view = scoreboard.getChildAt(i);
+            if (view instanceof TableRow) {
+
+                TableRow row = (TableRow) view;
+
+                for (int j = 1; j<= numPlayers; j++){ //iterates columns
+                    View view2 = row.getChildAt(i);
+                    if (view2 instanceof EditText) {
+
+                        EditText scorebox = (EditText) view2;
+                        int score = Integer.parseInt(scorebox.getText().toString());
+                        //todo: assign values to each Player in Game, will need to use index - 1
+                        //todo: also calc total here?
+                    }
+                }
 
 
 
-
-        /*
-        EditText scoreInput = new EditText(this);
-                scoreInput.setInputType(InputType.TYPE_CLASS_NUMBER);
-                scoreInput.setLayoutParams(cellLayout);
-         */
+            }
+        }
     }
 }

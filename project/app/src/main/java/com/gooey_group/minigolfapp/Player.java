@@ -1,6 +1,8 @@
 package com.gooey_group.minigolfapp;
 
-public class Player implements Comparable<Player> {
+import java.io.Serializable;
+
+public class Player implements Comparable<Player>, Serializable {
     int[] points; //hole 1 = points[0]
     int numHoles;
     int totalScore;
