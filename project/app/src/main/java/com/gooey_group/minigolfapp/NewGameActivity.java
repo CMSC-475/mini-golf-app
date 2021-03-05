@@ -58,14 +58,14 @@ public class NewGameActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 numPlayers = numPlayers + 1;
-                display.setText(numPlayers);
+                display.setText(Integer.toString(numPlayers));
             }
         });
 
         minus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(numPlayers == 0){
+                if(numPlayers == 1){
                     display.setText(Integer.toString(numPlayers));
                 }//end if
                 else{
@@ -75,8 +75,9 @@ public class NewGameActivity extends AppCompatActivity {
             }
         });
 
-        Game dummyGame = new Game(boardName, numPlayers, numHoles);
 
+        Game dummyGame = new Game(boardName, numPlayers, numHoles);
+        dummyGame.players[0].setName("hasdj");
 
         //BUTTON for Creating the game
     Button createGameBtn = findViewById(R.id.create_game_bttn);
@@ -84,7 +85,7 @@ public class NewGameActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(NewGameActivity.this, ScoreboardActivity.class);
-                intent.putExtra("GameInfo", dummyGame);
+                intent.putExtra("createdGame", dummyGame);
                 startActivity(intent);
             }
         });

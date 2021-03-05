@@ -25,19 +25,28 @@ import static com.gooey_group.minigolfapp.R.id.score_tbl;
 public class ScoreboardActivity extends AppCompatActivity {
 
     TableLayout scoreboard;
-    int numPlayers = 1;
-    int numHoles = 9;
+    int numPlayers = 2;
+    int numHoles = 18;
+    Game currentGame;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scoreboard);
 
-        Game dummyGame  = new Game("boardname", 1, 9);
+        currentGame = (Game) getIntent().getSerializableExtra("createdGame");
 
+        /**
+        Game dummyGame  = new Game("boardname", numPlayers, numHoles);
         dummyGame.players[0].points[0] = 1;
         dummyGame.players[0].points[1] = 2;
         dummyGame.players[0].totalScore = 3;
+         **/
+
+        //currentGame.players[0].points[0] = 5;
+        //currentGame.players[0].points[1] = 6;
+        currentGame.players[0].totalScore = 11;
+
         scoreboard = findViewById(score_tbl);
 
         setupTable();
@@ -47,10 +56,9 @@ public class ScoreboardActivity extends AppCompatActivity {
         endGameBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //
-                // endGame();
+                //endGame();
                 Intent intent = new Intent(ScoreboardActivity.this, EndGameActivity.class);
-                intent.putExtra("GameInfo", dummyGame);
+                intent.putExtra("GameInfo", currentGame);
                 startActivity(intent);
             }
         });
@@ -73,13 +81,23 @@ public class ScoreboardActivity extends AppCompatActivity {
         hole_lbl.setLayoutParams(headerLayout);
 
         TextView name_lbl = new TextView(this);
-        name_lbl.setText("Player 1");
+        name_lbl.setText(currentGame.players[0].name);
         name_lbl.setTypeface(null, Typeface.BOLD);
         name_lbl.setGravity(Gravity.CENTER);
         nameRow.addView(name_lbl);
         name_lbl.setLayoutParams(headerLayout);
 
+        //scoreboard.addView(nameRow,0);
+
+        TextView name_lbl2 = new TextView(this);
+        name_lbl2.setText("Player 2");
+        name_lbl2.setTypeface(null, Typeface.BOLD);
+        name_lbl2.setGravity(Gravity.CENTER);
+        nameRow.addView(name_lbl2);
+        name_lbl2.setLayoutParams(headerLayout);
+
         scoreboard.addView(nameRow,0);
+
 
         ViewGroup.LayoutParams cellLayout = headerLayout;
         cellLayout.height = 100;
@@ -139,8 +157,10 @@ public class ScoreboardActivity extends AppCompatActivity {
 
                         EditText scorebox = (EditText) view2;
                         int score = Integer.parseInt(scorebox.getText().toString());
-                        //todo: assign values to each Player in Game, will need to use index - 1
-                        //todo: also calc total here?
+
+                        //fill game obj with points
+                        currentGame.players[j-1].points[i-1] = score;
+                        currentGame.players[j-1].totalScore += score;
                     }
                 }
 

@@ -31,7 +31,8 @@ public class EndGameActivity extends AppCompatActivity implements Serializable {
             tableSize = gameData.numPlayers - 1;
 
             // sort players based on total score
-            Arrays.sort(gameData.players);
+            //Arrays.sort(gameData.players);
+
             Player playerOne = gameData.players[0];
             TextView playerOneName = (TextView) findViewById(R.id.name1);
             TextView playerOneScore = (TextView) findViewById(R.id.score1);

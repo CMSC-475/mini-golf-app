@@ -11,8 +11,10 @@
         android:theme="@style/Theme.MiniGolfApp">
         <activity android:name=".SelectActivity"></activity>
         <activity android:name=".EndGameActivity" />
-        <activity android:name=".ScoreboardActivity" />
-        <activity android:name=".NewGameActivity" />
+        <activity android:name=".ScoreboardActivity"
+            android:exported="true"/>
+        <activity android:name=".NewGameActivity"
+            android:exported="true"/>
         <activity android:name=".MainActivity">
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar">
             <intent-filter>
