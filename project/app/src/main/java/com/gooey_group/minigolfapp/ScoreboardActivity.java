@@ -26,7 +26,7 @@ public class ScoreboardActivity extends AppCompatActivity {
 
     TableLayout scoreboard;
     int numPlayers = 2;
-    int numHoles = 18;
+    int numHoles = 9;
     Game currentGame;
 
     @Override
@@ -35,17 +35,12 @@ public class ScoreboardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_scoreboard);
 
         currentGame = (Game) getIntent().getSerializableExtra("createdGame");
-
         /**
         Game dummyGame  = new Game("boardname", numPlayers, numHoles);
         dummyGame.players[0].points[0] = 1;
         dummyGame.players[0].points[1] = 2;
         dummyGame.players[0].totalScore = 3;
          **/
-
-        //currentGame.players[0].points[0] = 5;
-        //currentGame.players[0].points[1] = 6;
-        currentGame.players[0].totalScore = 11;
 
         scoreboard = findViewById(score_tbl);
 
@@ -56,7 +51,7 @@ public class ScoreboardActivity extends AppCompatActivity {
         endGameBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //endGame();
+                endGame();
                 Intent intent = new Intent(ScoreboardActivity.this, EndGameActivity.class);
                 intent.putExtra("GameInfo", currentGame);
                 startActivity(intent);
@@ -90,7 +85,7 @@ public class ScoreboardActivity extends AppCompatActivity {
         //scoreboard.addView(nameRow,0);
 
         TextView name_lbl2 = new TextView(this);
-        name_lbl2.setText("Player 2");
+        name_lbl2.setText(currentGame.players[1].name);
         name_lbl2.setTypeface(null, Typeface.BOLD);
         name_lbl2.setGravity(Gravity.CENTER);
         nameRow.addView(name_lbl2);
@@ -145,6 +140,7 @@ public class ScoreboardActivity extends AppCompatActivity {
     }
 
     public void endGame(){
+        int score = 0;
         for (int i = 1; i<= numHoles; i++){ //iterates rows
             View view = scoreboard.getChildAt(i);
             if (view instanceof TableRow) {
@@ -152,11 +148,16 @@ public class ScoreboardActivity extends AppCompatActivity {
                 TableRow row = (TableRow) view;
 
                 for (int j = 1; j<= numPlayers; j++){ //iterates columns
-                    View view2 = row.getChildAt(i);
+                    View view2 = row.getChildAt(j);
                     if (view2 instanceof EditText) {
 
                         EditText scorebox = (EditText) view2;
-                        int score = Integer.parseInt(scorebox.getText().toString());
+
+                        if(scorebox.getText().toString().isEmpty()){
+                            score = 0;
+                        }else {
+                            score = Integer.parseInt(scorebox.getText().toString());
+                        }
 
                         //fill game obj with points
                         currentGame.players[j-1].points[i-1] = score;

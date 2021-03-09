@@ -7,12 +7,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class NewGameActivity extends AppCompatActivity {
-    int numPlayers, numHoles;
+    int numPlayers, numHoles = 9; //TODO: set this properly later
     String boardName;
     TextView display;
+    EditText playerNames;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,15 +77,24 @@ public class NewGameActivity extends AppCompatActivity {
             }
         });
 
-
+        //create game object
         Game dummyGame = new Game(boardName, numPlayers, numHoles);
-        dummyGame.players[0].setName("hasdj");
+
+
 
         //BUTTON for Creating the game
     Button createGameBtn = findViewById(R.id.create_game_bttn);
         createGameBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                EditText player1 = (EditText) findViewById(R.id.player1);
+                String player1Name = player1.getText().toString();
+
+                EditText player2 = (EditText) findViewById(R.id.player2);
+                String player2Name = player2.getText().toString();
+
+                dummyGame.players[0].setName(player1Name);
+                dummyGame.players[1].setName(player2Name);
                 Intent intent = new Intent(NewGameActivity.this, ScoreboardActivity.class);
                 intent.putExtra("createdGame", dummyGame);
                 startActivity(intent);
