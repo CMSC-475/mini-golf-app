@@ -67,7 +67,7 @@ public class EndGameActivity extends AppCompatActivity implements Serializable {
         homepageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(EndGameActivity.this, NewGameActivity.class);
+                Intent intent = new Intent(EndGameActivity.this, SelectActivity.class);
                 startActivity(intent);
             }
         });

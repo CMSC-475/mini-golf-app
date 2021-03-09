@@ -7,6 +7,7 @@
     tools:context=".SelectActivity">
 
     <TableLayout
+        android:id="@+id/tableLayout"
         android:layout_width="350dp"
         android:layout_height="450dp"
         android:layout_marginStart="30dp"
@@ -21,53 +22,117 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="88dp"
-            android:background="@drawable/border"
-            android:layout_weight=".2">
+            android:background="@drawable/border">
 
             <TextView
                 android:id="@+id/textView6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_marginTop="35dp"
+                android:layout_marginRight="205dp"
+                android:text="Game One" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_marginTop="30dp"
+                app:srcCompat="@android:drawable/ic_menu_send" />
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="43dp"
+                android:layout_height="44dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="30dp"
+                app:srcCompat="@android:drawable/ic_menu_delete" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:background="@drawable/border"
-            android:layout_weight=".2" >
+            android:background="@drawable/border">
 
             <TextView
                 android:id="@+id/textView11"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_marginTop="35dp"
+                android:layout_marginRight="205dp"
+                android:text="Game Two" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_marginTop="30dp"
+                app:srcCompat="@android:drawable/ic_menu_send" />
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="43dp"
+                android:layout_height="44dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="30dp"
+                app:srcCompat="@android:drawable/ic_menu_delete" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/border"
-            android:layout_weight=".2">
+            android:background="@drawable/border">
 
             <TextView
                 android:id="@+id/textView14"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_marginTop="35dp"
+                android:layout_marginRight="205dp"
+                android:text="Game Three" />
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_marginTop="30dp"
+                app:srcCompat="@android:drawable/ic_menu_send" />
+
+            <ImageView
+                android:id="@+id/imageView8"
+                android:layout_width="43dp"
+                android:layout_height="44dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="30dp"
+                app:srcCompat="@android:drawable/ic_menu_delete" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:background="@drawable/border"
-            android:layout_weight=".2">
+            android:layout_height="match_parent"
+            android:background="@drawable/border">
 
             <TextView
                 android:id="@+id/textView15"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_marginTop="35dp"
+                android:layout_marginRight="205dp"
+                android:text="Game Four" />
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_marginTop="30dp"
+                app:srcCompat="@android:drawable/ic_menu_send" />
+
+            <ImageView
+                android:id="@+id/imageView9"
+                android:layout_width="43dp"
+                android:layout_height="44dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="30dp"
+                app:srcCompat="@android:drawable/ic_menu_delete" />
         </TableRow>
     </TableLayout>
 
@@ -83,4 +148,17 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/add_game_btn"
+        android:layout_width="61dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="316dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@android:drawable/ic_input_add" />
 </androidx.constraintlayout.widget.ConstraintLayout>
