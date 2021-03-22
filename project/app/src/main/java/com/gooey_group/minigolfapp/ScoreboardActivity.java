@@ -3,6 +3,7 @@ package com.gooey_group.minigolfapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -20,12 +21,15 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import static com.gooey_group.minigolfapp.R.id.header_tbl;
 import static com.gooey_group.minigolfapp.R.id.score_tbl;
 
 public class ScoreboardActivity extends AppCompatActivity {
 
     TableLayout scoreboard;
-    int numPlayers = 2;
+    TableLayout headerRow;
+    //defaults
+    int numPlayers = 4;
     int numHoles = 9;
     Game currentGame;
 
@@ -34,14 +38,10 @@ public class ScoreboardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scoreboard);
 
-        currentGame = (Game) getIntent().getSerializableExtra("createdGame");
-        /**
-        Game dummyGame  = new Game("boardname", numPlayers, numHoles);
-        dummyGame.players[0].points[0] = 1;
-        dummyGame.players[0].points[1] = 2;
-        dummyGame.players[0].totalScore = 3;
-         **/
+        getSupportActionBar().hide();
 
+        currentGame = (Game) getIntent().getSerializableExtra("createdGame");
+        headerRow = findViewById(header_tbl);
         scoreboard = findViewById(score_tbl);
 
         setupTable();
@@ -67,14 +67,16 @@ public class ScoreboardActivity extends AppCompatActivity {
 
         TextView hole_lbl = new TextView(this);
         hole_lbl.setText("Hole");
+        hole_lbl.setTextSize(25);
         hole_lbl.setTypeface(null, Typeface.BOLD);
         hole_lbl.setGravity(Gravity.CENTER);
         nameRow.addView(hole_lbl);
 
         ViewGroup.LayoutParams headerLayout = hole_lbl.getLayoutParams();
-        headerLayout.width = 150;
+        headerLayout.width = 210;
         hole_lbl.setLayoutParams(headerLayout);
 
+        //todo: generate name labels in loop
         TextView name_lbl = new TextView(this);
         name_lbl.setText(currentGame.players[0].name);
         name_lbl.setTypeface(null, Typeface.BOLD);
@@ -91,18 +93,21 @@ public class ScoreboardActivity extends AppCompatActivity {
         nameRow.addView(name_lbl2);
         name_lbl2.setLayoutParams(headerLayout);
 
-        scoreboard.addView(nameRow,0);
+        headerRow.addView(nameRow,0);
 
 
         ViewGroup.LayoutParams cellLayout = headerLayout;
-        cellLayout.height = 100;
+        cellLayout.height = 200;
 
-        for(int i = 1; i <= numHoles; i++) { //numHoles = num rows
+        //add hole number labels
+        for(int i = 0; i <= numHoles; i++) { //numHoles = num rows
 
                 TableRow tr = new TableRow(this);
                 tr.setLayoutParams(lp);
                 TextView text = new TextView(this);
-                text.setText(Integer.toString(i));
+                text.setText(Integer.toString(i+1));
+                //text.setBackgroundColor(Color.parseColor("#a0d6a2"));
+                text.setTextSize(25);
                 text.setGravity(Gravity.CENTER);
                 tr.addView(text);
                 text.setLayoutParams(cellLayout);
@@ -115,7 +120,7 @@ public class ScoreboardActivity extends AppCompatActivity {
 
     public void setupScoreInputs(){
 
-        for (int i = 1; i<= numHoles; i++){
+        for (int i = 0; i<= numHoles; i++){
             View view = scoreboard.getChildAt(i); // a row
             if (view instanceof TableRow) {
 
@@ -125,11 +130,12 @@ public class ScoreboardActivity extends AppCompatActivity {
 
                     EditText scoreInput = new EditText(this);
                     scoreInput.setInputType(InputType.TYPE_CLASS_NUMBER);
-
+                    scoreInput.setTextSize(25);
+                    scoreInput.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
                     row.addView(scoreInput);
 
                     ViewGroup.LayoutParams inputLayout = scoreInput.getLayoutParams();
-                    inputLayout.width = 150;
+                    inputLayout.width = 210;
                     scoreInput.setLayoutParams(inputLayout);
 
                 }
