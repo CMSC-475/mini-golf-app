@@ -29,7 +29,7 @@ public class ScoreboardActivity extends AppCompatActivity {
     TableLayout scoreboard;
     TableLayout headerRow;
     //defaults
-    int numPlayers = 4;
+    int numPlayers = 2;
     int numHoles = 9;
     Game currentGame;
 
@@ -43,6 +43,8 @@ public class ScoreboardActivity extends AppCompatActivity {
         currentGame = (Game) getIntent().getSerializableExtra("createdGame");
         headerRow = findViewById(header_tbl);
         scoreboard = findViewById(score_tbl);
+        numPlayers = currentGame.numPlayers;
+        numHoles = currentGame.numHoles;
 
         setupTable();
 
@@ -76,7 +78,7 @@ public class ScoreboardActivity extends AppCompatActivity {
         headerLayout.width = 210;
         hole_lbl.setLayoutParams(headerLayout);
 
-        //todo: generate name labels in loop
+        /**
         TextView name_lbl = new TextView(this);
         name_lbl.setText(currentGame.players[0].name);
         name_lbl.setTypeface(null, Typeface.BOLD);
@@ -94,13 +96,24 @@ public class ScoreboardActivity extends AppCompatActivity {
         name_lbl2.setLayoutParams(headerLayout);
 
         headerRow.addView(nameRow,0);
+         **/
 
+        for(int i = 0; i < numPlayers; i++ ){
+            TextView name_lbl = new TextView(this);
+            name_lbl.setText(currentGame.players[i].name);
+            name_lbl.setTypeface(null, Typeface.BOLD);
+            name_lbl.setGravity(Gravity.CENTER);
+            nameRow.addView(name_lbl);
+            name_lbl.setLayoutParams(headerLayout);
+        }
+
+        headerRow.addView(nameRow,0);
 
         ViewGroup.LayoutParams cellLayout = headerLayout;
         cellLayout.height = 200;
 
         //add hole number labels
-        for(int i = 0; i <= numHoles; i++) { //numHoles = num rows
+        for(int i = 0; i < numHoles; i++) { //numHoles = num rows
 
                 TableRow tr = new TableRow(this);
                 tr.setLayoutParams(lp);
@@ -120,7 +133,7 @@ public class ScoreboardActivity extends AppCompatActivity {
 
     public void setupScoreInputs(){
 
-        for (int i = 0; i<= numHoles; i++){
+        for (int i = 0; i< numHoles; i++){
             View view = scoreboard.getChildAt(i); // a row
             if (view instanceof TableRow) {
 
@@ -147,7 +160,7 @@ public class ScoreboardActivity extends AppCompatActivity {
 
     public void endGame(){
         int score = 0;
-        for (int i = 1; i<= numHoles; i++){ //iterates rows
+        for (int i = 0; i < numHoles; i++){ //iterates rows
             View view = scoreboard.getChildAt(i);
             if (view instanceof TableRow) {
 
@@ -166,7 +179,7 @@ public class ScoreboardActivity extends AppCompatActivity {
                         }
 
                         //fill game obj with points
-                        currentGame.players[j-1].points[i-1] = score;
+                        currentGame.players[j-1].points[i] = score;
                         currentGame.players[j-1].totalScore += score;
                     }
                 }
