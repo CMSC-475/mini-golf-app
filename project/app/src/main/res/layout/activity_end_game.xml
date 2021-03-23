@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#f7f7f2"
     tools:context=".EndGameActivity">
 
     <Button
@@ -11,7 +12,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="68dp"
-        android:background="#988181"
         android:fontFamily="@font/open_sans"
         android:text="Return To Homepage"
         app:backgroundTint="#6CBF6F"
@@ -24,54 +24,54 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:fontFamily="@font/open_sans_bold"
-        android:text="Winner"
+        android:gravity="center"
+        android:text="Winner!"
+        android:textColor="#000000"
         android:textSize="36dp"
         app:layout_constraintBottom_toTopOf="@+id/name1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
-        android:id="@+id/name1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="232dp"
-        android:fontFamily="@font/open_sans"
-        android:text="name"
-        android:textSize="32dp"
-        app:layout_constraintBottom_toTopOf="@+id/returnHP"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
         android:id="@+id/score1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
         android:fontFamily="@font/open_sans"
+        android:gravity="center"
         android:text="Score:"
+        android:textColor="#000000"
         android:textSize="28dp"
-        app:layout_constraintBottom_toTopOf="@+id/returnHP"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name1"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/name1" />
+
+    <TextView
+        android:id="@+id/crown"
+        android:layout_width="75dp"
+        android:layout_height="82dp"
+        android:text="@string/crown_emoji"
+        android:textSize="64sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TableLayout
         android:id="@+id/table1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/returnHP"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="196dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/score1">
+        app:layout_constraintTop_toBottomOf="@+id/score1"
+        app:layout_constraintVertical_bias="0.05">
 
         <TableRow
             android:id="@+id/row0"
@@ -82,10 +82,11 @@
                 android:id="@+id/nameHeader"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:background="#BABABA"
+                android:background="#FFFFFF"
                 android:fontFamily="@font/open_sans_bold"
                 android:padding="5sp"
                 android:text="Player"
+                android:textColor="#000000"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -93,11 +94,12 @@
                 android:id="@+id/scoreHeader"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="#BABABA"
+                android:background="#FFFFFF"
                 android:fontFamily="@font/open_sans_bold"
                 android:gravity="center"
                 android:padding="5sp"
                 android:text="Score"
+                android:textColor="#000000"
                 android:textSize="20sp"
                 android:textStyle="bold" />
         </TableRow>
@@ -111,20 +113,22 @@
                 android:id="@+id/name2"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:background="#BABABA"
+                android:background="#FFFFFF"
                 android:fontFamily="@font/open_sans"
                 android:padding="5sp"
                 android:text="2."
+                android:textColor="#000000"
                 android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/score2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="#BABABA"
+                android:background="#FFFFFF"
                 android:fontFamily="@font/open_sans"
                 android:gravity="center"
                 android:padding="5sp"
+                android:textColor="#000000"
                 android:textSize="16sp" />
         </TableRow>
 
@@ -137,20 +141,22 @@
                 android:id="@+id/name3"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:background="#BABABA"
+                android:background="#FFFFFF"
                 android:fontFamily="@font/open_sans"
                 android:padding="5sp"
                 android:text="3."
+                android:textColor="#000000"
                 android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/score3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="#BABABA"
+                android:background="#FFFFFF"
                 android:fontFamily="@font/open_sans"
                 android:gravity="center"
                 android:padding="5sp"
+                android:textColor="#000000"
                 android:textSize="16sp" />
 
         </TableRow>
@@ -164,23 +170,41 @@
                 android:id="@+id/name4"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:background="#BABABA"
+                android:background="#FFFFFF"
                 android:fontFamily="@font/open_sans"
                 android:padding="5sp"
                 android:text="4."
+                android:textColor="#000000"
                 android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/score4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="#BABABA"
+                android:background="#FFFFFF"
                 android:fontFamily="@font/open_sans"
                 android:gravity="center"
                 android:padding="5sp"
+                android:textColor="#000000"
                 android:textSize="16sp" />
         </TableRow>
 
     </TableLayout>
+
+    <TextView
+        android:id="@+id/name1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="232dp"
+        android:fontFamily="@font/open_sans"
+        android:gravity="center"
+        android:text="name"
+        android:textColor="#000000"
+        android:textSize="32dp"
+        app:layout_constraintBottom_toTopOf="@+id/returnHP"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.158" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

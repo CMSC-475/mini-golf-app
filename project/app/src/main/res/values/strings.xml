@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MiniGolfApp</string>
+    <string name = "crown_emoji"> &#x1f451; </string>
 </resources>
