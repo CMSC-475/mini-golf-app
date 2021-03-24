@@ -21,7 +21,7 @@ public class NewGameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_game);
 
-        getSupportActionBar().hide();
+//        getSupportActionBar().hide();
 
         numPlayers = 2;
         Button plus = (Button) findViewById(R.id.addbtn);

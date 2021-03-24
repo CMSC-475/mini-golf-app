@@ -99,24 +99,28 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Player 1" />
+            android:text="Player 1"
+            android:textColor="#000000"/>
 
         <EditText
             android:id="@+id/player1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text=" " />
+            android:text=""
+            android:textColor="#000000"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Player 2" />
+            android:text="Player 2"
+            android:textColor="#000000"/>
 
         <EditText
             android:id="@+id/player2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text=" " />
+            android:text=""
+            android:textColor="#000000"/>
 
     </LinearLayout>
 
@@ -156,6 +160,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="New Game"
+        android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.477"
@@ -170,6 +175,7 @@
         android:layout_height="wrap_content"
         android:text="Number of holes:"
         android:textSize="16sp"
+        android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="@+id/holesView"
         app:layout_constraintEnd_toEndOf="@+id/holesView"
         app:layout_constraintHorizontal_bias="0.047"
@@ -183,6 +189,7 @@
         android:layout_height="wrap_content"
         android:text="Number of Players:"
         android:textSize="16sp"
+        android:textColor="#000000"
         app:layout_constraintBottom_toTopOf="@+id/playertxt"
         app:layout_constraintEnd_toEndOf="@+id/playerView"
         app:layout_constraintHorizontal_bias="0.054"
