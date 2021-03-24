@@ -23,6 +23,7 @@ public class NewGameActivity extends AppCompatActivity {
 
 //        getSupportActionBar().hide();
 
+
         numPlayers = 2;
         Button plus = (Button) findViewById(R.id.addbtn);
         Button minus = (Button) findViewById(R.id.minusbtn);
