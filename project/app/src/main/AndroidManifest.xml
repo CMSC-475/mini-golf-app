@@ -9,21 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MiniGolfApp">
-        <activity android:name=".SelectActivity"></activity>
-        <activity android:name=".EndGameActivity" />
-        <activity android:name=".ScoreboardActivity"
-            android:exported="true"/>
-        <activity android:name=".NewGameActivity"
-            android:exported="true"/>
-        <activity android:name=".MainActivity">
-            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar">
+        <activity android:name=".SelectActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity android:name=".EndGameActivity" />
+        <activity android:name=".ScoreboardActivity"
+            android:exported="true"/>
+        <activity android:name=".NewGameActivity"
+            android:exported="true"/>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
