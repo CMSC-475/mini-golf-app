@@ -38,7 +38,6 @@ public class ScoreboardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scoreboard);
 
-        getSupportActionBar().hide();
 
         currentGame = (Game) getIntent().getSerializableExtra("createdGame");
         headerRow = findViewById(header_tbl);
