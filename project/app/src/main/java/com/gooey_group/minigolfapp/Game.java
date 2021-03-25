@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.Arrays;
 
 public class Game implements Serializable {
-    String boardName;
+//    String boardName;
     int numPlayers;
     int numHoles;
     Player[] players;
@@ -17,8 +17,8 @@ public class Game implements Serializable {
     long endTime;
     long elapsedTime;
 
-    public Game(String name, int numPlayers, int numHoles){
-        boardName = name;
+    public Game(int numPlayers, int numHoles){
+//        boardName = name;
         this.numHoles = numHoles;
         this.numPlayers = numPlayers;
         players = new Player[numPlayers];

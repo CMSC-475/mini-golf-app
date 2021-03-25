@@ -8,47 +8,10 @@
     tools:context=".NewGameActivity">
 
     <Button
-        android:id="@+id/addbtn"
-        android:layout_width="40dp"
-        android:layout_height="39dp"
-        android:backgroundTint="#6CBF6F"
-        android:text="+"
-        app:layout_constraintBottom_toBottomOf="@+id/playertxt"
-        app:layout_constraintEnd_toEndOf="@+id/playerView"
-        app:layout_constraintStart_toEndOf="@+id/playertxt"
-        app:layout_constraintTop_toTopOf="@+id/playertxt" />
-
-
-    <Button
-        android:id="@+id/minusbtn"
-        android:layout_width="36dp"
-        android:layout_height="37dp"
-        android:backgroundTint="#6CBF6F"
-        android:text="-"
-        app:layout_constraintBottom_toBottomOf="@+id/playertxt"
-        app:layout_constraintEnd_toStartOf="@+id/playertxt"
-        app:layout_constraintStart_toStartOf="@+id/playerView"
-        app:layout_constraintTop_toTopOf="@+id/playertxt" />
-
-    <Button
-        android:id="@+id/create_game_bttn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="44dp"
-        android:backgroundTint="#6CBF6F"
-        android:text="Create New Game"
-        app:iconTint="#4CAF50"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/playerView" />
-
-    <Button
         android:id="@+id/nineHoleBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="56dp"
         android:backgroundTint="#6CBF6F"
         android:text="9"
         app:layout_constraintBottom_toBottomOf="@+id/holesView"
@@ -60,169 +23,168 @@
         android:id="@+id/eighteenHoleBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
+        android:layout_marginStart="68dp"
         android:layout_marginBottom="4dp"
         android:backgroundTint="#6CBF6F"
         android:text="18"
         app:layout_constraintBottom_toBottomOf="@+id/holesView"
         app:layout_constraintStart_toEndOf="@+id/nineHoleBtn"
         app:layout_constraintTop_toBottomOf="@+id/numofHoles"
-        app:layout_constraintVertical_bias="0.857" />
+        app:layout_constraintVertical_bias="1.0" />
 
-    <EditText
-        android:id="@+id/ScoreboardEditTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Enter scoreboard name"
-        android:textColor="#757272"
-        android:textSize="14dp"
-        app:layout_constraintBottom_toBottomOf="@+id/boardView"
-        app:layout_constraintEnd_toEndOf="@+id/boardView"
-        app:layout_constraintHorizontal_bias="0.062"
-        app:layout_constraintStart_toStartOf="@+id/boardView"
-        app:layout_constraintTop_toBottomOf="@+id/textView11"
-        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/addbtn"
+        android:layout_width="40dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="40dp"
+        android:backgroundTint="#6CBF6F"
+        android:text="+"
+        app:layout_constraintBottom_toTopOf="@+id/playerLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/playertxt"
+        app:layout_constraintTop_toBottomOf="@+id/textView16"
+        app:layout_constraintVertical_bias="0.302" />
+
+    <Button
+        android:id="@+id/minusbtn"
+        android:layout_width="36dp"
+        android:layout_height="37dp"
+        android:layout_marginEnd="36dp"
+        android:backgroundTint="#6CBF6F"
+        android:text="-"
+        app:layout_constraintBottom_toTopOf="@+id/playerLayout"
+        app:layout_constraintEnd_toStartOf="@+id/playertxt"
+        app:layout_constraintHorizontal_bias="0.901"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView16"
+        app:layout_constraintVertical_bias="0.295" />
+
+    <Button
+        android:id="@+id/create_game_bttn"
+        android:layout_width="246dp"
+        android:layout_height="53dp"
+        android:layout_marginBottom="44dp"
+        android:backgroundTint="#6CBF6F"
+        android:text="Create New Game"
+        android:textSize="18sp"
+        app:iconTint="#4CAF50"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <LinearLayout
         android:id="@+id/playerLayout"
         android:layout_width="335dp"
         android:layout_height="225dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="@+id/playerView"
-        app:layout_constraintEnd_toEndOf="@+id/playerView"
-        app:layout_constraintStart_toStartOf="@+id/playerView"
+        app:layout_constraintBottom_toTopOf="@+id/create_game_bttn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/playertxt">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Player 1"
-            android:textColor="#000000"/>
+            android:textColor="#000000"
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/player1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text=""
-            android:textColor="#000000"/>
+            android:textColor="#000000" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Player 2"
-            android:textColor="#000000"/>
+            android:textColor="#000000"
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/player2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text=""
-            android:textColor="#000000"/>
+            android:textColor="#000000" />
 
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/playertxt"
-        android:layout_width="127dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="284dp"
-        android:ems="10"
-        android:inputType="number"
-        android:textAlignment="center"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/playerView"
-        app:layout_constraintEnd_toEndOf="@+id/playerView"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="@+id/playerView"
-        app:layout_constraintTop_toTopOf="@+id/playerView"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Scoreboard Name:"
-        android:textColor="#0E0E0E"
-        android:textSize="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/boardView"
-        app:layout_constraintEnd_toEndOf="@+id/boardView"
-        app:layout_constraintHorizontal_bias="0.052"
-        app:layout_constraintStart_toStartOf="@+id/boardView"
-        app:layout_constraintTop_toTopOf="@+id/boardView"
-        app:layout_constraintVertical_bias="0.159" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
         android:text="New Game"
         android:textColor="#000000"
+        android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.477"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.021"
-        tools:textSize="25sp" />
+        app:layout_constraintVertical_bias="0.041" />
 
     <TextView
         android:id="@+id/numofHoles"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Number of holes:"
-        android:textSize="16sp"
+        android:text="Number of Holes:"
         android:textColor="#000000"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/holesView"
         app:layout_constraintEnd_toEndOf="@+id/holesView"
-        app:layout_constraintHorizontal_bias="0.047"
+        app:layout_constraintHorizontal_bias="0.057"
         app:layout_constraintStart_toStartOf="@+id/holesView"
         app:layout_constraintTop_toTopOf="@+id/holesView"
-        app:layout_constraintVertical_bias="0.169" />
+        app:layout_constraintVertical_bias="0.126" />
+
+    <TextView
+        android:id="@+id/playertxt"
+        android:layout_width="127dp"
+        android:layout_height="62dp"
+        android:layout_marginBottom="288dp"
+        android:ems="10"
+        android:inputType="number"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/create_game_bttn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.907" />
 
     <TextView
         android:id="@+id/textView16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Number of Players:"
-        android:textSize="16sp"
         android:textColor="#000000"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/playertxt"
-        app:layout_constraintEnd_toEndOf="@+id/playerView"
-        app:layout_constraintHorizontal_bias="0.054"
-        app:layout_constraintStart_toStartOf="@+id/playerView"
-        app:layout_constraintTop_toTopOf="@+id/playerView"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <View
-        android:id="@+id/boardView"
-        android:layout_width="360dp"
-        android:layout_height="90dp"
-        android:layout_marginTop="28dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintHorizontal_bias="0.13"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/holesView"
+        app:layout_constraintVertical_bias="0.403" />
 
     <View
         android:id="@+id/holesView"
         android:layout_width="360dp"
         android:layout_height="98dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="72dp"
+        app:layout_constraintBottom_toTopOf="@+id/playertxt"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/boardView" />
-
-    <View
-        android:id="@+id/playerView"
-        android:layout_width="360dp"
-        android:layout_height="326dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/holesView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

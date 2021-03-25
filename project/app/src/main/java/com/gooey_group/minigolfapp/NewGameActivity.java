@@ -28,9 +28,9 @@ public class NewGameActivity extends AppCompatActivity {
         Button plus = (Button) findViewById(R.id.addbtn);
         Button minus = (Button) findViewById(R.id.minusbtn);
         display = (TextView) findViewById(R.id.playertxt);
-        EditText name = (EditText) findViewById(R.id.ScoreboardEditTxt);
+//        EditText name = (EditText) findViewById(R.id.ScoreboardEditTxt);
 
-        boardName = name.getText().toString();
+//        boardName = name.getText().toString();
 
         display.setText(Integer.toString(numPlayers)); //u need to use integer.tostring for numbers
 
@@ -81,7 +81,7 @@ public class NewGameActivity extends AppCompatActivity {
         });
 
         //create game object
-        Game dummyGame = new Game(boardName, numPlayers, numHoles);
+        Game dummyGame = new Game(numPlayers, numHoles);
 
 
 
