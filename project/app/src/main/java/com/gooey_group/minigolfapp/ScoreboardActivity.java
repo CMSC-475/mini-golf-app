@@ -63,6 +63,7 @@ public class ScoreboardActivity extends AppCompatActivity {
     public void setupTable(){
 
         TableRow nameRow = new TableRow(this);
+        nameRow.setBackgroundColor(Color.parseColor("#d8d2cd"));
         TableRow.LayoutParams lp = new TableRow.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT);
         nameRow.setLayoutParams(lp);
 
@@ -71,6 +72,7 @@ public class ScoreboardActivity extends AppCompatActivity {
         hole_lbl.setTextSize(25);
         hole_lbl.setTypeface(null, Typeface.BOLD);
         hole_lbl.setGravity(Gravity.CENTER);
+        //hole_lbl.setBackgroundColor(Color.parseColor("#d8d2cd"));
         nameRow.addView(hole_lbl);
 
         ViewGroup.LayoutParams headerLayout = hole_lbl.getLayoutParams();
@@ -102,6 +104,7 @@ public class ScoreboardActivity extends AppCompatActivity {
             name_lbl.setText(currentGame.players[i].name);
             name_lbl.setTypeface(null, Typeface.BOLD);
             name_lbl.setGravity(Gravity.CENTER);
+            //name_lbl.setTextSize(25);
             nameRow.addView(name_lbl);
             name_lbl.setLayoutParams(headerLayout);
         }
@@ -118,7 +121,7 @@ public class ScoreboardActivity extends AppCompatActivity {
                 tr.setLayoutParams(lp);
                 TextView text = new TextView(this);
                 text.setText(Integer.toString(i+1));
-                //text.setBackgroundColor(Color.parseColor("#a0d6a2"));
+                //text.setBackgroundColor(Color.parseColor("#d8d2cd"));
                 text.setTextSize(25);
                 text.setGravity(Gravity.CENTER);
                 tr.addView(text);
@@ -151,8 +154,6 @@ public class ScoreboardActivity extends AppCompatActivity {
                     scoreInput.setLayoutParams(inputLayout);
 
                 }
-
-
             }
         }
     }
@@ -182,9 +183,6 @@ public class ScoreboardActivity extends AppCompatActivity {
                         currentGame.players[j-1].totalScore += score;
                     }
                 }
-
-
-
             }
         }
     }
