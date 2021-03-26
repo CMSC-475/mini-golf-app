@@ -18,8 +18,13 @@ public class EndGameActivity extends AppCompatActivity implements Serializable {
 
     Button homepageButton;
     int tableSize;
-    Intent gameIntent;
     Game gameData;
+    int totalPlayers;
+    Player currentPlayer;
+    TextView currentPlayerName;
+    TextView currentPlayerScore;
+
+    // TODO: tie condition, dynamic table, table shadow, scrollable table
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,52 +35,54 @@ public class EndGameActivity extends AppCompatActivity implements Serializable {
         if (getIntent().getSerializableExtra("GameInfo") != null) {
             gameData = (Game) getIntent().getSerializableExtra("GameInfo");
             tableSize = gameData.numPlayers - 1;
+            totalPlayers = gameData.numPlayers;
 
             // sort players based on total score
             Arrays.sort(gameData.players);
 
             // check for certain cases so the app screen is formatted better
-            if (gameData.numPlayers == 1) {
+            if (totalPlayers == 1) {
                 TableLayout playersTable = (TableLayout) findViewById(R.id.table1);
                 playersTable.setVisibility(View.GONE);
-                Player playerOne = gameData.players[0];
-                TextView playerOneName = (TextView) findViewById(R.id.name1);
-                TextView playerOneScore = (TextView) findViewById(R.id.score1);
-                playerOneName.setText(playerOne.name);
-                playerOneScore.setText("Score: " + Integer.toString(playerOne.totalScore));
+                currentPlayer = gameData.players[0];
+                TextView currentPlayerName = (TextView) findViewById(R.id.name1);
+                TextView currentPlayerScore = (TextView) findViewById(R.id.score1);
+                currentPlayerName.setText(currentPlayer.name);
+                currentPlayerScore.setText("Score: " + Integer.toString(currentPlayer.totalScore));
             }
-            else if (gameData.numPlayers == 2) {
+            else if (totalPlayers == 2) {
                 // todo: hard coded table for now, will make dynamic later
                 // can possibly just put this in a for loop, with i being used to find gameData.players[i], name(i+1), and score(i+1)
-                Player playerOne = gameData.players[0];
-                TextView playerOneName = (TextView) findViewById(R.id.name1);
-                TextView playerOneScore = (TextView) findViewById(R.id.score1);
-                playerOneName.setText(playerOne.name);
-                playerOneScore.setText("Score: " + Integer.toString(playerOne.totalScore));
+                currentPlayer = gameData.players[0];
+                currentPlayerName = (TextView) findViewById(R.id.name1);
+                currentPlayerScore = (TextView) findViewById(R.id.score1);
+                currentPlayerName.setText(currentPlayer.name);
+                currentPlayerScore.setText("Score: " + Integer.toString(currentPlayer.totalScore));
 
-                Player playerTwo = gameData.players[1];
-                TextView playerTwoName = (TextView) findViewById(R.id.name2);
-                TextView playerTwoScore = (TextView) findViewById(R.id.score2);
-                playerTwoName.setText("2. " + playerTwo.name);
-                playerTwoScore.setText(Integer.toString(playerTwo.totalScore));
-                TableRow removeRow = (TableRow) findViewById((R.id.row2));
-                removeRow.setVisibility(View.GONE);
-                removeRow = (TableRow) findViewById((R.id.row3));
-                removeRow.setVisibility(View.GONE);
+                currentPlayer = gameData.players[1];
+                currentPlayerName = (TextView) findViewById(R.id.name2);
+                currentPlayerScore = (TextView) findViewById(R.id.score2);
+                currentPlayerName.setText("2. " + currentPlayer.name);
+                currentPlayerScore.setText(Integer.toString(currentPlayer.totalScore));
             }
             // currently only supports up to four players
             else {
-                Player currPlayer = gameData.players[2];
-                TextView currPlayerName = (TextView) findViewById(R.id.name3);
-                TextView currPlayerScore = (TextView) findViewById(R.id.score3);
-                currPlayerName.setText("3. " + currPlayer.name);
-                currPlayerScore.setText(Integer.toString(currPlayer.totalScore));
-
-                currPlayer = gameData.players[3];
-                currPlayerName = (TextView) findViewById(R.id.name4);
-                currPlayerScore = (TextView) findViewById(R.id.score4);
-                currPlayerName.setText("4. " + currPlayer.name);
-                currPlayerScore.setText(Integer.toString(currPlayer.totalScore));
+                // COULD ALSO INFLATE
+                TableLayout playersTable = (TableLayout) findViewById(R.id.table1);
+                for(int i = 1; i < tableSize; i++) {
+                    TableRow tr =  new TableRow(this);
+                    int numColumns = 2;
+                    for(int j = 0; j < numColumns; j++) {
+                        TextView txtGeneric = new TextView(this);
+                        txtGeneric.setTextSize(18);
+                        txtGeneric.setText("Test");
+                        tr.addView(txtGeneric);
+                        /*txtGeneric.setHeight(30);
+                        txtGeneric.setWidth(50);
+                        txtGeneric.setTextColor(Color.BLUE);*/
+                    }
+                    playersTable.addView(tr);
+                }
             }
         }
 
