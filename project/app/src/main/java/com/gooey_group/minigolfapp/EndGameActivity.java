@@ -25,7 +25,7 @@ public class EndGameActivity extends AppCompatActivity implements Serializable {
     TextView currentPlayerScore;
 
     // TODO: tie condition, dynamic table, table shadow, scrollable table
-
+    // ask if i can make headers consistent
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
