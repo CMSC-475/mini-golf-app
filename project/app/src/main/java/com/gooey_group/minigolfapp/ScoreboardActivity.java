@@ -63,7 +63,7 @@ public class ScoreboardActivity extends AppCompatActivity {
     public void setupTable(){
 
         TableRow nameRow = new TableRow(this);
-        nameRow.setBackgroundColor(Color.parseColor("#d8d2cd"));
+        nameRow.setBackgroundColor(Color.parseColor("#b3e8b5"));
         TableRow.LayoutParams lp = new TableRow.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT);
         nameRow.setLayoutParams(lp);
 
@@ -76,28 +76,8 @@ public class ScoreboardActivity extends AppCompatActivity {
         nameRow.addView(hole_lbl);
 
         ViewGroup.LayoutParams headerLayout = hole_lbl.getLayoutParams();
-        headerLayout.width = 210;
+        headerLayout.width = 230; //width of cell
         hole_lbl.setLayoutParams(headerLayout);
-
-        /**
-        TextView name_lbl = new TextView(this);
-        name_lbl.setText(currentGame.players[0].name);
-        name_lbl.setTypeface(null, Typeface.BOLD);
-        name_lbl.setGravity(Gravity.CENTER);
-        nameRow.addView(name_lbl);
-        name_lbl.setLayoutParams(headerLayout);
-
-        //scoreboard.addView(nameRow,0);
-
-        TextView name_lbl2 = new TextView(this);
-        name_lbl2.setText(currentGame.players[1].name);
-        name_lbl2.setTypeface(null, Typeface.BOLD);
-        name_lbl2.setGravity(Gravity.CENTER);
-        nameRow.addView(name_lbl2);
-        name_lbl2.setLayoutParams(headerLayout);
-
-        headerRow.addView(nameRow,0);
-         **/
 
         for(int i = 0; i < numPlayers; i++ ){
             TextView name_lbl = new TextView(this);
@@ -131,6 +111,7 @@ public class ScoreboardActivity extends AppCompatActivity {
         }
 
         setupScoreInputs();
+        colorRows();
     }
 
     public void setupScoreInputs(){
@@ -150,10 +131,23 @@ public class ScoreboardActivity extends AppCompatActivity {
                     row.addView(scoreInput);
 
                     ViewGroup.LayoutParams inputLayout = scoreInput.getLayoutParams();
-                    inputLayout.width = 210;
+                    inputLayout.width = 230;
                     scoreInput.setLayoutParams(inputLayout);
 
                 }
+            }
+        }
+    }
+
+    public void colorRows(){
+        for (int i = 0; i< numHoles; i++){
+            View view = scoreboard.getChildAt(i); // a row
+            if (view instanceof TableRow) {
+
+                TableRow row = (TableRow) view;
+                if(i%2!=0)
+                    row.setBackgroundColor(Color.parseColor("#f2eeeb"));
+
             }
         }
     }
