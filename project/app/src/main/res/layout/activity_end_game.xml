@@ -9,12 +9,14 @@
 
     <Button
         android:id="@+id/returnHP"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="68dp"
+        android:layout_width="335dp"
+        android:layout_height="56dp"
+        android:layout_marginBottom="44dp"
         android:fontFamily="@font/open_sans"
         android:text="Return To Homepage"
+        android:textSize="22sp"
         app:backgroundTint="#6CBF6F"
+        app:iconTint="#4CAF50"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -22,13 +24,13 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="wrap_content"
+        android:layout_width="411dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/open_sans_bold"
         android:gravity="center"
         android:text="Winner!"
         android:textColor="#000000"
-        android:textSize="36dp"
+        android:textSize="40dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/name1"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,13 +40,13 @@
 
     <TextView
         android:id="@+id/score1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="411dp"
+        android:layout_height="46dp"
         android:fontFamily="@font/open_sans"
         android:gravity="center"
         android:text="Score:"
         android:textColor="#000000"
-        android:textSize="32dp"
+        android:textSize="36dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name1" />
@@ -55,7 +57,7 @@
         android:layout_height="90dp"
         android:gravity="center"
         android:text="@string/crown_emoji"
-        android:textSize="64sp"
+        android:textSize="66sp"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -66,7 +68,7 @@
         android:id="@+id/table1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:layout_marginBottom="196dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -82,19 +84,19 @@
 
             <TextView
                 android:id="@+id/nameHeader"
-                android:layout_width="200dp"
+                android:layout_width="220dp"
                 android:layout_height="wrap_content"
                 android:background="#FFFFFF"
                 android:fontFamily="@font/open_sans_bold"
                 android:padding="5sp"
                 android:text="Player"
                 android:textColor="#000000"
-                android:textSize="20sp"
+                android:textSize="26sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/scoreHeader"
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:background="#FFFFFF"
                 android:fontFamily="@font/open_sans_bold"
@@ -102,7 +104,7 @@
                 android:padding="5sp"
                 android:text="Score"
                 android:textColor="#000000"
-                android:textSize="20sp"
+                android:textSize="26sp"
                 android:textStyle="bold" />
         </TableRow>
 
@@ -113,25 +115,25 @@
 
             <TextView
                 android:id="@+id/name2"
-                android:layout_width="200dp"
+                android:layout_width="220dp"
                 android:layout_height="wrap_content"
                 android:background="#FFFFFF"
                 android:fontFamily="@font/open_sans"
                 android:padding="5sp"
                 android:text="2."
                 android:textColor="#000000"
-                android:textSize="16sp" />
+                android:textSize="26sp" />
 
             <TextView
                 android:id="@+id/score2"
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:background="#FFFFFF"
                 android:fontFamily="@font/open_sans"
                 android:gravity="center"
                 android:padding="5sp"
                 android:textColor="#000000"
-                android:textSize="16sp" />
+                android:textSize="26sp" />
         </TableRow>
 
     </TableLayout>
@@ -139,13 +141,13 @@
     <TextView
         android:id="@+id/name1"
         android:layout_width="411dp"
-        android:layout_height="42dp"
+        android:layout_height="46dp"
         android:layout_marginTop="232dp"
         android:fontFamily="@font/open_sans"
         android:gravity="center"
         android:text="name"
         android:textColor="#000000"
-        android:textSize="32dp"
+        android:textSize="36dp"
         app:layout_constraintBottom_toTopOf="@+id/returnHP"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.666"
