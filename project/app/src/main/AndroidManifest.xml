@@ -16,7 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".EndGameActivity" />
+        <activity android:name=".EndGameActivity"
+            android:exported="true"/>
         <activity android:name=".ScoreboardActivity"
             android:exported="true"/>
         <activity android:name=".NewGameActivity"

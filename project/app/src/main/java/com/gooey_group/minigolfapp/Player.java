@@ -23,8 +23,6 @@ public class Player implements Comparable<Player>, Serializable {
 
     @Override
     public int compareTo(Player other) {
-        // usually toString should not be used,
-        // instead one of the attributes or more in a comparator chain
         if (this.totalScore > other.totalScore) { return 1; }
         else if (this.totalScore == other.totalScore) { return 0; }
         else { return -1; }
