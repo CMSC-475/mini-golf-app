@@ -96,7 +96,7 @@
 
             <TextView
                 android:id="@+id/scoreHeader"
-                android:layout_width="80dp"
+                android:layout_width="90dp"
                 android:layout_height="wrap_content"
                 android:background="#FFFFFF"
                 android:fontFamily="@font/open_sans_bold"

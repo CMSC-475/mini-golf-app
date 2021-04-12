@@ -26,8 +26,7 @@ public class EndGameActivity extends AppCompatActivity implements Serializable {
     TextView currentPlayerScore;
 
 
-    // TODO: tie condition, improved dynamic table, table shadow, scrollable table
-    // TODO: error handling (no players, etc)
+    // TODO: improved dynamic table, table shadow, scrollable table
     // make headers consistent, main page button not centered, make buttons same sizes
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,36 +39,53 @@ public class EndGameActivity extends AppCompatActivity implements Serializable {
             //testGameInstance();
             tableSize = gameData.numPlayers;
             totalPlayers = gameData.numPlayers;
-
+            TextView currentPlayerName;
+            TextView currentPlayerScore;
             // sort players based on total score
             Arrays.sort(gameData.players);
-
+            if (totalPlayers <= 0) {
+                TableLayout playersTable = (TableLayout) findViewById(R.id.table1);
+                playersTable.setVisibility(View.GONE);
+                currentPlayerName = (TextView) findViewById(R.id.name1);
+                currentPlayerScore = (TextView) findViewById(R.id.score1);
+                currentPlayerName.setText("No One!");
+                currentPlayerScore.setText("0");
+            }
             // check for certain cases so the app screen is formatted better
-            if (totalPlayers == 1) {
+            else if (totalPlayers == 1) {
                 TableLayout playersTable = (TableLayout) findViewById(R.id.table1);
                 playersTable.setVisibility(View.GONE);
                 currentPlayer = gameData.players[0];
-                TextView currentPlayerName = (TextView) findViewById(R.id.name1);
-                TextView currentPlayerScore = (TextView) findViewById(R.id.score1);
+                currentPlayerName = (TextView) findViewById(R.id.name1);
+                currentPlayerScore = (TextView) findViewById(R.id.score1);
                 currentPlayerName.setText(currentPlayer.name);
                 currentPlayerScore.setText("Score: " + Integer.toString(currentPlayer.totalScore));
             }
             else {
                 TableLayout playersTable = (TableLayout) findViewById(R.id.table1);
                 currentPlayer = gameData.players[0];
-                TextView currentPlayerName = (TextView) findViewById(R.id.name1);
-                TextView currentPlayerScore = (TextView) findViewById(R.id.score1);
-                currentPlayerName.setText(currentPlayer.name);
+                currentPlayerName = (TextView) findViewById(R.id.name1);
+                String currentName = currentPlayer.name;
+
+                if (currentName.length() > 12) {
+                    currentName = currentName.substring(0, 12) + ".";
+                }
+                currentPlayerScore = (TextView) findViewById(R.id.score1);
+                currentPlayerName.setText(currentName);
                 currentPlayerScore.setText("Score: " + Integer.toString(currentPlayer.totalScore));
 
                 int playerPosition = 2;
                 String playerPositionAndName = "";
-                String currentName = "";
+                currentName = "";
                 for(int i = 1; i < tableSize; i++) {
                     TableRow tr =  new TableRow(this);
                     TextView playerNameText = new TextView(this);
                     playerNameText.setTextSize(26);
                     currentName = gameData.players[i].name;
+                    if (currentName.length() > 12) {
+                        currentName = currentName.substring(0, 12) + ".";
+                    }
+
                     playerPositionAndName = " " + Integer.toString(playerPosition) + ". " + currentName;
                     playerPosition++;
                     playerNameText.setText(playerPositionAndName);
@@ -81,11 +97,7 @@ public class EndGameActivity extends AppCompatActivity implements Serializable {
                     playerScoreText.setText(Integer.toString(gameData.players[i].totalScore));
                     playerScoreText.setGravity(Gravity.CENTER);
                     playerScoreText.setBackgroundResource(R.color.white);
-                    //playerScoreText.setHeight(150);
                     tr.addView(playerScoreText);
-                    /*txtGeneric.setHeight(30);
-                    txtGeneric.setWidth(50);
-                    txtGeneric.setTextColor(Color.BLUE);*/
                     playersTable.addView(tr);
                 }
             }
