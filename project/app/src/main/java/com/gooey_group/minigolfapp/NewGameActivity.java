@@ -108,5 +108,4 @@ public class NewGameActivity extends AppCompatActivity {
 
 
 
-
 }//end NewGameActivity
