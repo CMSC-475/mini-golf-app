@@ -9,23 +9,26 @@
 
     <Button
         android:id="@+id/returnHP"
-        android:layout_width="335dp"
-        android:layout_height="56dp"
-        android:layout_marginBottom="44dp"
+        android:layout_width="321dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginEnd="45dp"
+        android:layout_marginBottom="40dp"
         android:fontFamily="@font/open_sans"
         android:text="Return To Homepage"
-        android:textSize="22sp"
+        android:textSize="20dp"
         app:backgroundTint="#6CBF6F"
-        app:iconTint="#4CAF50"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/golf_field" />
 
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="411dp"
         android:layout_height="wrap_content"
+        android:backgroundTint="#6CBF6F"
         android:fontFamily="@font/open_sans_bold"
         android:gravity="center"
         android:text="Winner!"
