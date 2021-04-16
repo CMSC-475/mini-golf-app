@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class NewGameActivity extends AppCompatActivity {
     int numPlayers, numHoles = 9; //TODO: set this properly later
     String boardName;
@@ -80,24 +82,33 @@ public class NewGameActivity extends AppCompatActivity {
             }
         });
 
-        //create game object
-        Game dummyGame = new Game(numPlayers, numHoles);
-
-
 
         //BUTTON for Creating the game
     Button createGameBtn = findViewById(R.id.create_game_bttn);
         createGameBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //create game object
+                Game dummyGame = new Game(numPlayers, numHoles);
+
+                ArrayList<String> playerNames = new ArrayList<String>(numPlayers);
+
+                for(int i = 0; i < numPlayers ; i++){
+                    playerNames.add("Player " + (i+1));
+                }
+
                 EditText player1 = (EditText) findViewById(R.id.player1);
                 String player1Name = player1.getText().toString();
+                playerNames.set(0, player1Name);
 
                 EditText player2 = (EditText) findViewById(R.id.player2);
                 String player2Name = player2.getText().toString();
+                playerNames.set(1, player2Name);
 
-                dummyGame.players[0].setName(player1Name);
-                dummyGame.players[1].setName(player2Name);
+                for(int i = 0; i < numPlayers ; i++){
+                    dummyGame.players[i].setName(playerNames.get(i));
+                }
+
                 Intent intent = new Intent(NewGameActivity.this, ScoreboardActivity.class);
                 intent.putExtra("createdGame", dummyGame);
                 startActivity(intent);
