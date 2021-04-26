@@ -31,7 +31,8 @@ public class EndGameActivity extends AppCompatActivity implements Serializable {
     final int MAX_SCORE = 999;
 
 
-    // TODO: improved dynamic table, table shadow, table doesn't scroll header
+    // TODO: improved dynamic table, table shadow, tie (if player 1 score == player 2 score), if player name is
+    // blank or if score is empty?
     // make headers consistent, main page button not centered, make buttons same sizes
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -173,7 +174,7 @@ public class EndGameActivity extends AppCompatActivity implements Serializable {
         playerTwo.setName("Andy");
         Player playerThree = new Player(9);
         playerThree.totalScore = 7;
-        playerThree.setName("Andy");
+        playerThree.setName("John");
         Player playerFour = new Player(9);
         playerFour.totalScore = 13;
         playerFour.setName("Tom");
@@ -183,7 +184,7 @@ public class EndGameActivity extends AppCompatActivity implements Serializable {
         Player playerSix = new Player(9);
         playerSix.totalScore = 12;
         playerSix.setName("Bob");
-        gameData = new Game(2, 9);
+        gameData = new Game(6, 9);
         gameData.players[0] = playerOne;
         gameData.players[1] = playerTwo;
         gameData.players[2] = playerThree;
