@@ -25,7 +25,7 @@
 
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/winnerText"
         android:layout_width="411dp"
         android:layout_height="wrap_content"
         android:backgroundTint="#6CBF6F"
@@ -62,7 +62,7 @@
         android:gravity="center"
         android:text="@string/crown_emoji"
         android:textSize="66sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintBottom_toTopOf="@+id/winnerText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

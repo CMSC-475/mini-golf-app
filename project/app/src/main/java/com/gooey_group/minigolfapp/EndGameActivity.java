@@ -47,6 +47,13 @@ public class EndGameActivity extends AppCompatActivity implements Serializable {
             tableSize = gameData.numPlayers;
             totalPlayers = gameData.numPlayers;
             // sort players based on total score
+
+            // check if any names are empty
+            for (int j = 0; j < totalPlayers; j++) {
+                if (gameData.players[j].name.isEmpty()) {
+                    gameData.players[j].name = "Player " + Integer.toString(j+1);
+                }
+            }
             Arrays.sort(gameData.players);
             TableLayout playersTable = (TableLayout) findViewById(R.id.table1);
             ScrollView scrollTable = (ScrollView) findViewById(R.id.scrollTable);
@@ -82,6 +89,7 @@ public class EndGameActivity extends AppCompatActivity implements Serializable {
                 currentPlayerInfo = gameData.players[0];
                 currentPlayerNameView = (TextView) findViewById(R.id.name1);
                 currentPlayerName = currentPlayerInfo.name;
+                // Name is empty condition
                 if (currentPlayerName.length() > 12) {
                     currentPlayerName = currentPlayerName.substring(0, 12) + ".";
                 }
@@ -100,20 +108,27 @@ public class EndGameActivity extends AppCompatActivity implements Serializable {
                 if (currentPlayerName.length() > 12) {
                     currentPlayerName = currentPlayerName.substring(0, 12) + ".";
                 }
-                playerPositionAndName = " " + Integer.toString(playerPosition) + ". " + currentPlayerName;
-                playerPosition++;
-                TextView playerTwoNameView = (TextView) findViewById(R.id.row1Name);
-                playerTwoNameView.setText((playerPositionAndName));
-                playerTwoNameView.setTextSize(26);
-                TextView playerTwoScoreView = (TextView) findViewById(R.id.row1Score);
                 currentPlayerScore = currentPlayerInfo.totalScore;
                 if (currentPlayerScore > MAX_SCORE) {
                     currentPlayerScore = MAX_SCORE;
                 }
+                // Tie Condition
+                if (currentPlayerScore == gameData.players[0].totalScore) {
+                    TextView changeWinnerText = (TextView) findViewById(R.id.winnerText);
+                    changeWinnerText.setText("It's a tie!");
+                    playerPositionAndName = " " + Integer.toString(1) + ". " + currentPlayerName;
+                }
+                else {
+                    playerPositionAndName = " " + Integer.toString(playerPosition) + ". " + currentPlayerName;
+                    playerPosition++;
+                }
+                TextView playerTwoNameView = (TextView) findViewById(R.id.row1Name);
+                playerTwoNameView.setText((playerPositionAndName));
+                playerTwoNameView.setTextSize(26);
+                TextView playerTwoScoreView = (TextView) findViewById(R.id.row1Score);
+
                 playerTwoScoreView.setText(Integer.toString(currentPlayerScore));
                 playerTwoScoreView.setTextSize(26);
-
-
 
                 for(int i = 2; i < tableSize; i++) {
                     TableRow tr =  new TableRow(this);
@@ -168,22 +183,22 @@ public class EndGameActivity extends AppCompatActivity implements Serializable {
     public void testGameInstance() {
         Player playerOne = new Player(9);
         playerOne.totalScore = 5;
-        playerOne.setName("Joe");
+        playerOne.setName("");
         Player playerTwo = new Player(9);
         playerTwo.totalScore = 6;
-        playerTwo.setName("Andy");
+        playerTwo.setName("");
         Player playerThree = new Player(9);
         playerThree.totalScore = 7;
-        playerThree.setName("John");
+        playerThree.setName("");
         Player playerFour = new Player(9);
         playerFour.totalScore = 13;
-        playerFour.setName("Tom");
+        playerFour.setName("");
         Player playerFive = new Player(9);
         playerFive.totalScore = 9;
-        playerFive.setName("Drew");
+        playerFive.setName("");
         Player playerSix = new Player(9);
         playerSix.totalScore = 12;
-        playerSix.setName("Bob");
+        playerSix.setName("");
         gameData = new Game(6, 9);
         gameData.players[0] = playerOne;
         gameData.players[1] = playerTwo;
