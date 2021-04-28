@@ -26,7 +26,7 @@
 
     <TextView
         android:id="@+id/winnerText"
-        android:layout_width="411dp"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="#6CBF6F"
         android:fontFamily="@font/open_sans_bold"
@@ -44,8 +44,8 @@
 
     <TextView
         android:id="@+id/score1"
-        android:layout_width="411dp"
-        android:layout_height="46dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
         android:fontFamily="@font/open_sans"
         android:gravity="center"
         android:text="Score:"
@@ -57,7 +57,7 @@
 
     <TextView
         android:id="@+id/crown"
-        android:layout_width="411dp"
+        android:layout_width="fill_parent"
         android:layout_height="90dp"
         android:gravity="center"
         android:text="@string/crown_emoji"
@@ -70,11 +70,12 @@
 
     <TextView
         android:id="@+id/name1"
-        android:layout_width="411dp"
-        android:layout_height="46dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="232dp"
         android:fontFamily="@font/open_sans"
         android:gravity="center"
+        android:includeFontPadding="false"
         android:text="name"
         android:textColor="#000000"
         android:textSize="36dp"
@@ -89,14 +90,13 @@
         android:layout_width="320dp"
         android:layout_height="176dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="280dp"
         android:layout_marginEnd="40dp"
-        android:layout_marginBottom="140dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/score1">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TableRow
             android:id="@+id/row0"
@@ -108,9 +108,9 @@
                 android:id="@+id/nameHeader"
                 android:layout_width="220dp"
                 android:layout_height="wrap_content"
+                android:background="@drawable/table_outline"
                 android:fontFamily="@font/open_sans_bold"
                 android:padding="5sp"
-                android:background="@drawable/table_outline"
                 android:text="Player"
                 android:textColor="#000000"
                 android:textSize="26sp"
