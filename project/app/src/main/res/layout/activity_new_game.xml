@@ -36,7 +36,7 @@
         android:id="@+id/nineHoleBtn"
         android:layout_width="85dp"
         android:layout_height="56dp"
-        android:layout_marginStart="60dp"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="12dp"
         android:backgroundTint="#6CBF6F"
         android:text="9"
@@ -48,13 +48,13 @@
         android:id="@+id/eighteenHoleBtn"
         android:layout_width="85dp"
         android:layout_height="56dp"
-        android:layout_marginStart="80dp"
+        android:layout_marginStart="28dp"
         android:layout_marginTop="12dp"
+        android:layout_marginEnd="28dp"
         android:backgroundTint="#6CBF6F"
         android:text="18"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.168"
+        app:layout_constraintEnd_toStartOf="@+id/hole_field"
         app:layout_constraintStart_toEndOf="@+id/nineHoleBtn"
         app:layout_constraintTop_toBottomOf="@+id/numofHoles" />
 
@@ -132,11 +132,13 @@
         android:id="@+id/playertxt"
         android:layout_width="111dp"
         android:layout_height="54dp"
+        android:background="@drawable/num_players_layout"
         android:ems="10"
         android:inputType="number"
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="22sp"
+        android:gravity="center"
         app:layout_constraintBottom_toTopOf="@+id/create_game_bttn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -157,5 +159,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nineHoleBtn"
         app:layout_constraintVertical_bias="0.512" />
+
+    <EditText
+        android:id="@+id/hole_field"
+        android:layout_width="85dp"
+        android:layout_height="58dp"
+
+        android:layout_marginEnd="40dp"
+        android:backgroundTint="@color/green_primary"
+        android:ems="10"
+        android:inputType="number"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/eighteenHoleBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/eighteenHoleBtn"
+        app:layout_constraintTop_toTopOf="@+id/eighteenHoleBtn"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
