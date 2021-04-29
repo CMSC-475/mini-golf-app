@@ -8,6 +8,30 @@
     tools:context=".NewGameActivity">
 
 
+    <ScrollView
+        android:layout_width="335dp"
+        android:layout_height="225dp"
+        app:layout_constraintBottom_toTopOf="@+id/create_game_bttn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/playertxt">
+
+        <LinearLayout
+            android:id="@+id/playerLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/create_game_bttn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/playertxt"
+            app:layout_constraintVertical_bias="0.701"
+            tools:context=".NewGameActivity">
+
+
+        </LinearLayout>
+    </ScrollView>
+
     <Button
         android:id="@+id/nineHoleBtn"
         android:layout_width="85dp"
@@ -74,30 +98,6 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent" />
 
-
-    <ScrollView
-        android:layout_width="335dp"
-        android:layout_height="225dp"
-        app:layout_constraintBottom_toTopOf="@+id/create_game_bttn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/playertxt">
-
-        <LinearLayout
-            android:id="@+id/playerLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toTopOf="@+id/create_game_bttn"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/playertxt"
-            app:layout_constraintVertical_bias="0.701"
-            tools:context=".NewGameActivity">
-
-
-        </LinearLayout>
-    </ScrollView>
 
     <TextView
         android:id="@+id/textView"

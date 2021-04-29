@@ -76,9 +76,12 @@ public class NewGameActivity extends AppCompatActivity {
         plus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                numPlayers = numPlayers + 1;
-                display.setText(Integer.toString(numPlayers));
-                playerText();
+                if (numPlayers < 10){
+
+                    numPlayers = numPlayers + 1;
+                    display.setText(Integer.toString(numPlayers));
+                    playerText();
+                }//end if
             }
         });
 
@@ -117,16 +120,9 @@ public class NewGameActivity extends AppCompatActivity {
                     playerNames.add("Player " + (i+1));
                 }
 
-//                EditText player1 = (EditText) findViewById(R.id.player1);
-//                String player1Name = player1.getText().toString();
-//                playerNames.set(0, player1Name);
-//
-//                EditText player2 = (EditText) findViewById(R.id.player2);
-//                String player2Name = player2.getText().toString();
-//                playerNames.set(1, player2Name);
 
                 for(int i = 0; i < numPlayers ; i++){
-                    dummyGame.players[i].setName(playerNames.get(i));
+                    dummyGame.players[i].setName(editChildren.get(i).getText().toString());
                 }
 
                 Intent intent = new Intent(NewGameActivity.this, ScoreboardActivity.class);
