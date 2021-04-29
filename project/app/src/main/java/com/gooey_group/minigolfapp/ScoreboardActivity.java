@@ -143,8 +143,8 @@ public class ScoreboardActivity extends AppCompatActivity {
 
         Log.i("ScoreboardActivity", Integer.toString(numTables));
 
-        ViewGroup.LayoutParams headerLayout = null;
-        TableRow.LayoutParams lp = new TableRow.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT);
+        ViewGroup.LayoutParams cellLayout = null; //layout for a cell in header
+        TableRow.LayoutParams lp = new TableRow.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT); //layout for entire header
 
         for(int i = 0; i < numTables; i++) {
 
@@ -158,11 +158,15 @@ public class ScoreboardActivity extends AppCompatActivity {
             hole_lbl.setTextSize(25);
             hole_lbl.setTypeface(null, Typeface.BOLD);
             hole_lbl.setGravity(Gravity.CENTER);
+
             nameRow.addView(hole_lbl); //add to nameRow
 
-            headerLayout = hole_lbl.getLayoutParams();
-            headerLayout.width = 230; //width of cell
-            hole_lbl.setLayoutParams(headerLayout);
+            cellLayout = hole_lbl.getLayoutParams();
+
+            cellLayout.width = 230; //width of cell
+            cellLayout.height = 200; //height of cell 
+
+            hole_lbl.setLayoutParams(cellLayout);
 
             int jMin = 0;
             int jMax = 1;
@@ -188,7 +192,7 @@ public class ScoreboardActivity extends AppCompatActivity {
                 name_lbl.setTypeface(null, Typeface.BOLD);
                 name_lbl.setGravity(Gravity.CENTER);
                 nameRow.addView(name_lbl);
-                name_lbl.setLayoutParams(headerLayout);
+                name_lbl.setLayoutParams(cellLayout);
 
             }
 
@@ -198,9 +202,6 @@ public class ScoreboardActivity extends AppCompatActivity {
 
         headerRow.addView(headerRows[0]); //sets to first page by default
         currentPageGlobal = 1;
-
-        ViewGroup.LayoutParams cellLayout = headerLayout;
-        cellLayout.height = 200;
 
         scoreRows = new TableRow[numHoles]; //array of ALL player scores, + the hole number label at index 0
 
@@ -293,7 +294,7 @@ public class ScoreboardActivity extends AppCompatActivity {
                 scoreInput.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
                 scoreInput.setTextColor(Color.parseColor("#000000"));
 
-                row.addView(scoreInput); //TODO: why this broke :(
+                row.addView(scoreInput);
 
                 ViewGroup.LayoutParams inputLayout = scoreInput.getLayoutParams();
                 inputLayout.width = 230;
@@ -304,15 +305,18 @@ public class ScoreboardActivity extends AppCompatActivity {
         }
 
         scoreboards = new TableRow[numTables][numHoles]; //an array representing all the scoreboard pages
-        //separate big array into groups of 4 columns (hole + 3 player cols)
 
+
+        //separate big array into groups of 4 columns (hole + 3 player cols)
+        //each of these groups is a page
         for(int i = 0; i < numTables; i++){ //iterates scoreboard pages
 
             scoreboardPage = new TableRow[numHoles]; //array of rows (forms pg)
-            TableRow tempRow;
+            //TableRow tempRow;
 
             for(int j=0; j< numHoles; j++) {//iterate rows
 
+                TableRow tempRow;
                 tempRow = scoreRows[j];
 
                 if (i == 0) {//pg1
@@ -344,7 +348,9 @@ public class ScoreboardActivity extends AppCompatActivity {
 
     public void setScoreboardPage(){
         scoreboard.removeAllViews();
+
         for(int i = 0; i < numHoles; i++){//set row by row
+            //iterate each row in the current scoreboard page
             scoreboard.addView(scoreboards[currentPageGlobal-1][i]);
         }
     }

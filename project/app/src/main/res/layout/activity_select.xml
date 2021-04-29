@@ -29,7 +29,7 @@
         android:layout_marginStart="45dp"
         android:layout_marginTop="84dp"
         android:layout_marginEnd="45dp"
-        android:layout_marginBottom="56dp"
+        android:layout_marginBottom="40dp"
         android:fontFamily="@font/open_sans"
         android:text="Create Game"
         android:textSize="20dp"
