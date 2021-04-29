@@ -87,6 +87,7 @@
         app:layout_constraintVertical_bias="0.158" />
 
     <LinearLayout
+        android:id="@+id/tableLinear"
         android:layout_width="320dp"
         android:layout_height="176dp"
         android:layout_marginStart="40dp"
@@ -108,11 +109,11 @@
                 android:id="@+id/nameHeader"
                 android:layout_width="220dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/table_outline"
+                android:background="@drawable/table_outline_header"
                 android:fontFamily="@font/open_sans_bold"
                 android:padding="5sp"
                 android:text="Player"
-                android:textColor="#000000"
+                android:textColor="#FFFFFF"
                 android:textSize="26sp"
                 android:textStyle="bold" />
 
@@ -120,12 +121,12 @@
                 android:id="@+id/scoreHeader"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/table_outline"
+                android:background="@drawable/table_outline_header"
                 android:fontFamily="@font/open_sans_bold"
                 android:gravity="center"
                 android:padding="5sp"
                 android:text="Score"
-                android:textColor="#000000"
+                android:textColor="#FFFFFF"
                 android:textSize="26sp"
                 android:textStyle="bold" />
 

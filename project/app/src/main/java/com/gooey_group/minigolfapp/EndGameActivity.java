@@ -9,6 +9,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.content.Intent;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -62,9 +63,11 @@ public class EndGameActivity extends AppCompatActivity implements Serializable {
             Arrays.sort(gameData.players);
             TableLayout playersTable = (TableLayout) findViewById(R.id.table1);
             ScrollView scrollTable = (ScrollView) findViewById(R.id.scrollTable);
+            LinearLayout layoutTable = (LinearLayout) findViewById(R.id.tableLinear);
             if (totalPlayers <= 0) {
                 playersTable.setVisibility(View.GONE);
                 scrollTable.setVisibility(View.GONE);
+                layoutTable.setVisibility(View.GONE);
                 currentPlayerNameView = (TextView) findViewById(R.id.name1);
                 currentPlayerScoreView = (TextView) findViewById(R.id.score1);
                 currentPlayerNameView.setText("No One!");
@@ -74,7 +77,7 @@ public class EndGameActivity extends AppCompatActivity implements Serializable {
             else if (totalPlayers == 1) {
                 playersTable.setVisibility(View.GONE);
                 scrollTable.setVisibility(View.GONE);
-
+                layoutTable.setVisibility(View.GONE);
                 currentPlayerInfo = gameData.players[0];
                 currentPlayerNameView = (TextView) findViewById(R.id.name1);
                 currentPlayerScoreView = (TextView) findViewById(R.id.score1);
