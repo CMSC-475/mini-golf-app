@@ -71,12 +71,6 @@ public class ScoreboardActivity extends AppCompatActivity {
             }
         });
 
-        Context context = getApplicationContext();
-        CharSequence text = "Swipe on the header to switch between pages!";
-        int duration = Toast.LENGTH_LONG;
-
-        Toast toast = Toast.makeText(context, text, duration);
-        toast.show();
 
     }
 
@@ -136,6 +130,14 @@ public class ScoreboardActivity extends AppCompatActivity {
     //@SuppressLint("ClickableViewAccessibility")
     public void setupTableWithPages() {
 
+        Context context = getApplicationContext();
+        CharSequence msg = "Swipe on the header to switch between pages!";
+        int duration = Toast.LENGTH_LONG;
+
+        Toast toast = Toast.makeText(context, msg, duration);
+        toast.show();
+
+
         double temp = ((double)numPlayers / 3) ;
         numTables = ((int) Math.ceil(temp)); //how many pages we need
 
@@ -164,7 +166,7 @@ public class ScoreboardActivity extends AppCompatActivity {
             cellLayout = hole_lbl.getLayoutParams();
 
             cellLayout.width = 230; //width of cell
-            cellLayout.height = 200; //height of cell 
+            cellLayout.height = 200; //height of cell
 
             hole_lbl.setLayoutParams(cellLayout);
 
@@ -231,7 +233,7 @@ public class ScoreboardActivity extends AppCompatActivity {
             public void onSwipeRight() {
                 if (currentPageGlobal != 1) { //can still go back
                     currentPageGlobal -= 1;
-                    Toast.makeText(ScoreboardActivity.this, "page" + currentPageGlobal, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ScoreboardActivity.this, "Page" + currentPageGlobal, Toast.LENGTH_SHORT).show();
                     headerRow.removeAllViews();
                     headerRow.addView(headerRows[currentPageGlobal - 1]);
                     setScoreboardPage();
@@ -242,7 +244,7 @@ public class ScoreboardActivity extends AppCompatActivity {
             public void onSwipeLeft() {
                 if(currentPageGlobal < numTables) {//can still go forward
                     currentPageGlobal += 1;
-                    Toast.makeText(ScoreboardActivity.this, "page" + currentPageGlobal, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ScoreboardActivity.this, "Page" + currentPageGlobal, Toast.LENGTH_SHORT).show();
                     headerRow.removeAllViews();
                     headerRow.addView(headerRows[currentPageGlobal - 1]);
                     setScoreboardPage();
