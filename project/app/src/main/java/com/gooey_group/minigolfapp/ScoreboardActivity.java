@@ -129,7 +129,6 @@ public class ScoreboardActivity extends AppCompatActivity {
         colorRows();
     }
 
-    //@SuppressLint("ClickableViewAccessibility")
     public void setupTableWithPages() {
 
         Context context = getApplicationContext();
@@ -237,8 +236,11 @@ public class ScoreboardActivity extends AppCompatActivity {
                 if (currentPageGlobal != 1) { //can still go back
                     currentPageGlobal -= 1;
                     Toast.makeText(ScoreboardActivity.this, "Page" + currentPageGlobal, Toast.LENGTH_SHORT).show();
+
+                    //put proper heading
                     headerRow.removeAllViews();
                     headerRow.addView(headerRows[currentPageGlobal - 1]);
+
                     setScoreboardPage();
                 }
 
@@ -248,8 +250,11 @@ public class ScoreboardActivity extends AppCompatActivity {
                 if(currentPageGlobal < numTables) {//can still go forward
                     currentPageGlobal += 1;
                     Toast.makeText(ScoreboardActivity.this, "Page" + currentPageGlobal, Toast.LENGTH_SHORT).show();
+
+                    //put proper heading
                     headerRow.removeAllViews();
                     headerRow.addView(headerRows[currentPageGlobal - 1]);
+
                     setScoreboardPage();
                 }
             }
@@ -316,7 +321,7 @@ public class ScoreboardActivity extends AppCompatActivity {
 
 
     public void setScoreboardPage(){
-        //scoreboard.removeAllViews();
+        scoreboard.removeAllViews();
 
 
         for(int i = 0; i < numHoles; i++){ //set row by row
@@ -352,7 +357,7 @@ public class ScoreboardActivity extends AppCompatActivity {
                     }
                 }
 
-            }else if(currentPageGlobal - 1 == 2){
+            }else if(currentPageGlobal - 1 == 2){ //pg 3
 
                 //set everything visible
                 for (int j = 0; j <= numPlayers; j++){
@@ -387,6 +392,9 @@ public class ScoreboardActivity extends AppCompatActivity {
 
     public void endGame(){
         int score = 0;
+
+
+
         for (int i = 0; i < numHoles; i++){ //iterates rows
             View view = scoreboard.getChildAt(i);
             if (view instanceof TableRow) {
