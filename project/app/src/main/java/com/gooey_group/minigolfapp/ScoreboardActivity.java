@@ -128,6 +128,7 @@ public class ScoreboardActivity extends AppCompatActivity {
                     scoreInput.setInputType(InputType.TYPE_CLASS_NUMBER);
                     scoreInput.setTextSize(25);
                     scoreInput.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                    scoreInput.setTextColor(Color.parseColor("#000000"));
                     row.addView(scoreInput);
 
                     ViewGroup.LayoutParams inputLayout = scoreInput.getLayoutParams();
