@@ -12,22 +12,31 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
+
+
 
 public class NewGameActivity extends AppCompatActivity {
     int numPlayers, numHoles; //TODO: set this properly later
     TextView display;
-//    EditText playerNames;
+    //    EditText playerNames;
     LinearLayout linearLayout;
 //    ArrayList<String> names;
 //    ArrayList<LinearLayout> linList;
+
+    ArrayList<TextView> textChildren;
+    ArrayList<EditText> editChildren;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_game);
         linearLayout = findViewById(R.id.playerLayout);
-
+        textChildren = new ArrayList<>();
+        editChildren = new ArrayList<>();
 //        getSupportActionBar().hide();
 
 //        default to 2 players
@@ -95,7 +104,7 @@ public class NewGameActivity extends AppCompatActivity {
 
 
         //BUTTON for Creating the game
-    Button createGameBtn = findViewById(R.id.create_game_bttn);
+        Button createGameBtn = findViewById(R.id.create_game_bttn);
         createGameBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -129,29 +138,38 @@ public class NewGameActivity extends AppCompatActivity {
     }//end onCreate
 
     public void delText() {
+        TextView deleteTextView = textChildren.get(textChildren.size()-1);
+        deleteTextView.setVisibility(View.GONE);
+        textChildren.remove(deleteTextView);
+        EditText deleteEditText = editChildren.get(editChildren.size()-1);
+        deleteEditText.setVisibility(View.GONE);
+        editChildren.remove(deleteEditText);
+
     }//delText
 
     public void playerText(){
 
-            LinearLayout play = new LinearLayout(this);
-            play.setOrientation(LinearLayout.VERTICAL);
+        LinearLayout play = new LinearLayout(this);
+        play.setOrientation(LinearLayout.VERTICAL);
 
-            linearLayout.addView(play);
+        linearLayout.addView(play);
 
-                TextView textView = new TextView(this);
-                textView.setText("Player " + String.valueOf(numPlayers));
-                textView.setTextSize(24);
+        TextView playerTextView = new TextView(this);
+        playerTextView.setText("Player " + String.valueOf(numPlayers));
+        playerTextView.setTextSize(24);
 
-                EditText editText = new EditText(this);
-                editText.setHint("Player " + String.valueOf(numPlayers) + " Name");
+        EditText editText = new EditText(this);
+        editText.setHint("Player " + String.valueOf(numPlayers) + " Name");
 
-                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.MATCH_PARENT
-                );
-                textView.setLayoutParams(params);
-                play.addView(textView);
-                play.addView(editText);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.MATCH_PARENT
+        );
+        playerTextView.setLayoutParams(params);
+        play.addView(playerTextView);
+        play.addView(editText);
+        textChildren.add(playerTextView);
+        editChildren.add(editText);
 
 
     }//end playertext
