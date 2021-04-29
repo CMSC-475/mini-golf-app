@@ -74,48 +74,30 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <LinearLayout
-        android:id="@+id/playerLayout"
+
+    <ScrollView
         android:layout_width="335dp"
         android:layout_height="225dp"
-        android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/create_game_bttn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/playertxt"
-        app:layout_constraintVertical_bias="0.701">
+        app:layout_constraintTop_toBottomOf="@+id/playertxt">
 
-        <TextView
+        <LinearLayout
+            android:id="@+id/playerLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Player 1"
-            android:textColor="#000000"
-            android:textSize="24sp" />
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/create_game_bttn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/playertxt"
+            app:layout_constraintVertical_bias="0.701"
+            tools:context=".NewGameActivity">
 
-        <EditText
-            android:id="@+id/player1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textColor="#000000"
-            android:textSize="22sp" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Player 2"
-            android:textColor="#000000"
-            android:textSize="24sp" />
-
-        <EditText
-            android:id="@+id/player2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textColor="#000000"
-            android:textSize="22sp" />
-
-    </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
     <TextView
         android:id="@+id/textView"
