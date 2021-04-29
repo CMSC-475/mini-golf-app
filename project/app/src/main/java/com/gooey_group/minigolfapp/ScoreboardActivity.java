@@ -25,6 +25,9 @@ import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 import static com.gooey_group.minigolfapp.R.id.header_tbl;
 import static com.gooey_group.minigolfapp.R.id.score_tbl;
 
@@ -38,10 +41,9 @@ public class ScoreboardActivity extends AppCompatActivity {
     int numTables = 1;
     int currentPageGlobal = 1;
     Game currentGame;
-    TableRow[] headerRows;
+
     TableRow[] scoreRows;
-    TableRow[][] scoreboards;
-    TableRow[] scoreboardPage;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,12 +73,6 @@ public class ScoreboardActivity extends AppCompatActivity {
             }
         });
 
-        Context context = getApplicationContext();
-        CharSequence text = "Swipe on the header to switch between pages!";
-        int duration = Toast.LENGTH_LONG;
-
-        Toast toast = Toast.makeText(context, text, duration);
-        toast.show();
 
     }
 
@@ -136,6 +132,14 @@ public class ScoreboardActivity extends AppCompatActivity {
     //@SuppressLint("ClickableViewAccessibility")
     public void setupTableWithPages() {
 
+        Context context = getApplicationContext();
+        CharSequence msg = "Swipe on the header to switch between pages!";
+        int duration = Toast.LENGTH_LONG;
+
+        Toast toast = Toast.makeText(context, msg, duration);
+        toast.show();
+
+
         double temp = ((double)numPlayers / 3) ;
         numTables = ((int) Math.ceil(temp)); //how many pages we need
 
@@ -146,6 +150,7 @@ public class ScoreboardActivity extends AppCompatActivity {
         ViewGroup.LayoutParams cellLayout = null; //layout for a cell in header
         TableRow.LayoutParams lp = new TableRow.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT); //layout for entire header
 
+        //build all header cells, add to header row for each page, add each header row (3 or 4 elements = ) to headerRows arr
         for(int i = 0; i < numTables; i++) {
 
             TableRow nameRow = new TableRow(this); //nameRow has Hole header, Player names
@@ -164,7 +169,7 @@ public class ScoreboardActivity extends AppCompatActivity {
             cellLayout = hole_lbl.getLayoutParams();
 
             cellLayout.width = 230; //width of cell
-            cellLayout.height = 200; //height of cell 
+            cellLayout.height = 200; //height of cell
 
             hole_lbl.setLayoutParams(cellLayout);
 
@@ -231,7 +236,7 @@ public class ScoreboardActivity extends AppCompatActivity {
             public void onSwipeRight() {
                 if (currentPageGlobal != 1) { //can still go back
                     currentPageGlobal -= 1;
-                    Toast.makeText(ScoreboardActivity.this, "page" + currentPageGlobal, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ScoreboardActivity.this, "Page" + currentPageGlobal, Toast.LENGTH_SHORT).show();
                     headerRow.removeAllViews();
                     headerRow.addView(headerRows[currentPageGlobal - 1]);
                     setScoreboardPage();
@@ -242,7 +247,7 @@ public class ScoreboardActivity extends AppCompatActivity {
             public void onSwipeLeft() {
                 if(currentPageGlobal < numTables) {//can still go forward
                     currentPageGlobal += 1;
-                    Toast.makeText(ScoreboardActivity.this, "page" + currentPageGlobal, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ScoreboardActivity.this, "Page" + currentPageGlobal, Toast.LENGTH_SHORT).show();
                     headerRow.removeAllViews();
                     headerRow.addView(headerRows[currentPageGlobal - 1]);
                     setScoreboardPage();
@@ -281,12 +286,11 @@ public class ScoreboardActivity extends AppCompatActivity {
 
     public void setupScoreInputsWithPages(){
 
-        //add textboxes for each tablerow
+        //add textboxes for each tablerow, add to array of rows
+        // (rows are playerNum + 1 in length)
         for (int i = 0; i < numHoles; i++){
 
-            TableRow row = scoreRows[i];
-
-            for(int j = 0; j < numPlayers; j++){
+            for(int j = 0; j < numPlayers; j++){ //goes across row
 
                 EditText scoreInput = new EditText(this);
                 scoreInput.setInputType(InputType.TYPE_CLASS_NUMBER);
@@ -294,7 +298,7 @@ public class ScoreboardActivity extends AppCompatActivity {
                 scoreInput.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
                 scoreInput.setTextColor(Color.parseColor("#000000"));
 
-                row.addView(scoreInput);
+                scoreRows[i].addView(scoreInput);
 
                 ViewGroup.LayoutParams inputLayout = scoreInput.getLayoutParams();
                 inputLayout.width = 230;
@@ -304,42 +308,7 @@ public class ScoreboardActivity extends AppCompatActivity {
 
         }
 
-        scoreboards = new TableRow[numTables][numHoles]; //an array representing all the scoreboard pages
 
-
-        //separate big array into groups of 4 columns (hole + 3 player cols)
-        //each of these groups is a page
-        for(int i = 0; i < numTables; i++){ //iterates scoreboard pages
-
-            scoreboardPage = new TableRow[numHoles]; //array of rows (forms pg)
-            //TableRow tempRow;
-
-            for(int j=0; j< numHoles; j++) {//iterate rows
-
-                TableRow tempRow;
-                tempRow = scoreRows[j];
-
-                if (i == 0) {//pg1
-                    tempRow.removeViews(4, tempRow.getChildCount() - 4); //remove last rows
-                } else if (i == 1) {//pg 2
-                    tempRow.removeViews(1, 3 ); //remove first 3 rows (except hole row)
-
-                    if(tempRow.getChildCount() > 4) {
-                        tempRow.removeViews(4, tempRow.getChildCount() - 4); //trim any last rows
-                    }
-
-                } else if (i == 2) {//pg3
-                    tempRow.removeViews(1, 8); //remove first 7 rows
-
-                }
-
-                scoreboardPage[j] = tempRow; //add trimmed row to scoreboard page
-
-            }
-
-            scoreboards[i] = scoreboardPage; //add page to page arr
-
-        }
 
         setScoreboardPage();
 
@@ -347,11 +316,59 @@ public class ScoreboardActivity extends AppCompatActivity {
 
 
     public void setScoreboardPage(){
-        scoreboard.removeAllViews();
+        //scoreboard.removeAllViews();
 
-        for(int i = 0; i < numHoles; i++){//set row by row
+
+        for(int i = 0; i < numHoles; i++){ //set row by row
             //iterate each row in the current scoreboard page
-            scoreboard.addView(scoreboards[currentPageGlobal-1][i]);
+            if (currentPageGlobal - 1 == 0) {
+
+                //set everything visible
+                for (int j = 0; j <= numPlayers; j++){
+                    scoreRows[i].getChildAt(j).setVisibility(View.VISIBLE);
+                }
+
+                //hide everything except first 4
+                for (int j = 4; j <= numPlayers; j++) {
+                    scoreRows[i].getChildAt(j).setVisibility(View.GONE);
+                }
+            }
+            else if(currentPageGlobal - 1  == 1){ //pg 2
+
+                //set everything visible
+                for (int j = 0; j <= numPlayers; j++){
+                    scoreRows[i].getChildAt(j).setVisibility(View.VISIBLE);
+                }
+
+                //hide 1, 2, 3
+                for (int j = 1; j<= 3 ; j++) {
+                    scoreRows[i].getChildAt(j).setVisibility(View.GONE);
+                }
+
+                if(numPlayers >=8) {
+                    //hide everything after 2nd pg
+                    for (int j = 8; j < numPlayers; j++) {
+                        scoreRows[i].getChildAt(j).setVisibility(View.GONE);
+                    }
+                }
+
+            }else if(currentPageGlobal - 1 == 2){
+
+                //set everything visible
+                for (int j = 0; j <= numPlayers; j++){
+                    scoreRows[i].getChildAt(j).setVisibility(View.VISIBLE);
+                }
+
+                //hide 1st 2 pgs
+                for (int j = 1; j <= 7; j++) {
+                    scoreRows[i].getChildAt(j).setVisibility(View.GONE);
+                }
+
+            }
+
+            scoreboard.addView(scoreRows[i]);
+
+
         }
     }
 
