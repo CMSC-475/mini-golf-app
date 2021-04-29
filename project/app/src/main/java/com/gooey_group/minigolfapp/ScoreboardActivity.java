@@ -25,6 +25,9 @@ import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 import static com.gooey_group.minigolfapp.R.id.header_tbl;
 import static com.gooey_group.minigolfapp.R.id.score_tbl;
 
@@ -148,6 +151,7 @@ public class ScoreboardActivity extends AppCompatActivity {
         ViewGroup.LayoutParams cellLayout = null; //layout for a cell in header
         TableRow.LayoutParams lp = new TableRow.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT); //layout for entire header
 
+        //build all header cells, add to header row for each page, add each header row (3 or 4 elements = ) to headerRows arr
         for(int i = 0; i < numTables; i++) {
 
             TableRow nameRow = new TableRow(this); //nameRow has Hole header, Player names
@@ -283,12 +287,11 @@ public class ScoreboardActivity extends AppCompatActivity {
 
     public void setupScoreInputsWithPages(){
 
-        //add textboxes for each tablerow
+        //add textboxes for each tablerow, add to array of rows
+        // (rows are playerNum + 1 in length)
         for (int i = 0; i < numHoles; i++){
 
-            TableRow row = scoreRows[i];
-
-            for(int j = 0; j < numPlayers; j++){
+            for(int j = 0; j < numPlayers; j++){ //goes across row
 
                 EditText scoreInput = new EditText(this);
                 scoreInput.setInputType(InputType.TYPE_CLASS_NUMBER);
@@ -296,7 +299,8 @@ public class ScoreboardActivity extends AppCompatActivity {
                 scoreInput.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
                 scoreInput.setTextColor(Color.parseColor("#000000"));
 
-                row.addView(scoreInput);
+                scoreRows[i].addView(scoreInput);
+
 
                 ViewGroup.LayoutParams inputLayout = scoreInput.getLayoutParams();
                 inputLayout.width = 230;
@@ -314,23 +318,41 @@ public class ScoreboardActivity extends AppCompatActivity {
         for(int i = 0; i < numTables; i++){ //iterates scoreboard pages
 
             scoreboardPage = new TableRow[numHoles]; //array of rows (forms pg)
-            //TableRow tempRow;
+            TableRow[] tempArr = Arrays.copyOf(scoreRows, scoreRows.length);
 
             for(int j=0; j< numHoles; j++) {//iterate rows
 
                 TableRow tempRow;
-                tempRow = scoreRows[j];
+                tempRow = tempArr[j];
 
                 if (i == 0) {//pg1
-                    tempRow.removeViews(4, tempRow.getChildCount() - 4); //remove last rows
+                    //tempRow.removeViews(4, tempRow.getChildCount() - 4); //remove last rows
+
+                    for(int x = 4; x < tempRow.getChildCount(); x++){
+                        tempRow.getChildAt(x).setVisibility(View.GONE);
+                    }
+
                 } else if (i == 1) {//pg 2
-                    tempRow.removeViews(1, 3 ); //remove first 3 rows (except hole row)
+                    /*tempRow.removeViews(1, 3 ); //remove first 3 rows (except hole row)
 
                     if(tempRow.getChildCount() > 4) {
                         tempRow.removeViews(4, tempRow.getChildCount() - 4); //trim any last rows
+                    }*/
+
+                    for(int x = 1; x <= 4; x++){
+                        tempRow.getChildAt(x).setVisibility(View.GONE);
                     }
 
+                    if(tempRow.getChildCount() > 8) {
+                        for(int x = 7; x < tempRow.getChildCount(); x++){
+                            tempRow.getChildAt(x).setVisibility(View.GONE);
+                        }
+                    }
+
+
                 } else if (i == 2) {//pg3
+
+                    //TODO
                     tempRow.removeViews(1, 8); //remove first 7 rows
 
                 }
@@ -340,6 +362,7 @@ public class ScoreboardActivity extends AppCompatActivity {
             }
 
             scoreboards[i] = scoreboardPage; //add page to page arr
+
 
         }
 
