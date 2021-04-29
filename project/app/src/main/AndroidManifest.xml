@@ -21,10 +21,13 @@
         <activity android:name=".ScoreboardActivity"
             android:exported="true"/>
         <activity android:name=".NewGameActivity"
-            android:exported="true"/>
+            android:exported="true"
+            android:windowSoftInputMode="adjustNothing"/>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
     </application>
+
 
 </manifest>
