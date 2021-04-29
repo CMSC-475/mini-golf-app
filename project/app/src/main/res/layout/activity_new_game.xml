@@ -86,9 +86,9 @@
 
     <Button
         android:id="@+id/create_game_bttn"
-        android:layout_width="270dp"
-        android:layout_height="56dp"
-        android:layout_marginBottom="44dp"
+        android:layout_width="321dp"
+        android:layout_height="75dp"
+        android:layout_marginBottom="40dp"
         android:backgroundTint="#6CBF6F"
         android:text="Create New Game"
         android:textSize="22sp"
@@ -99,12 +99,14 @@
         app:layout_constraintStart_toStartOf="parent" />
 
 
+
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:layout_marginBottom="4dp"
+        android:gravity="center"
         android:text="New Game"
         android:textColor="#000000"
         android:textSize="30sp"
@@ -117,10 +119,11 @@
 
     <TextView
         android:id="@+id/numofHoles"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
-        android:text="Number of Holes:"
+        android:gravity="center"
+        android:text="Number of Holes"
         android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -131,14 +134,14 @@
     <TextView
         android:id="@+id/playertxt"
         android:layout_width="111dp"
-        android:layout_height="54dp"
+        android:layout_height="60dp"
         android:background="@drawable/num_players_layout"
         android:ems="10"
+        android:gravity="center"
         android:inputType="number"
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="22sp"
-        android:gravity="center"
         app:layout_constraintBottom_toTopOf="@+id/create_game_bttn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -147,10 +150,11 @@
 
     <TextView
         android:id="@+id/textView16"
-        android:layout_width="239dp"
+        android:layout_width="fill_parent"
         android:layout_height="32dp"
         android:layout_marginBottom="68dp"
-        android:text="Number of Players:"
+        android:gravity="center"
+        android:text="Number of Players"
         android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/playertxt"
