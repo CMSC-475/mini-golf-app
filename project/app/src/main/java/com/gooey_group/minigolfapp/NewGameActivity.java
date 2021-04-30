@@ -97,7 +97,7 @@ public class NewGameActivity extends AppCompatActivity {
         plus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (numPlayers < 10){
+                if (numPlayers < 9){
 
                     numPlayers = numPlayers + 1;
                     display.setText(Integer.toString(numPlayers));

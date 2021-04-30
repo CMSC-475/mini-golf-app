@@ -390,7 +390,7 @@ public class ScoreboardActivity extends AppCompatActivity {
                 }
 
                 //hide 1st 2 pgs
-                for (int j = 1; j <= 7; j++) {
+                for (int j = 1; j <= 6; j++) {
                     scoreRows[i].getChildAt(j).setVisibility(View.GONE);
                 }
 
