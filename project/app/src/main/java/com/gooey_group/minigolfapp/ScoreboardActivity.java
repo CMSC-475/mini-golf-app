@@ -98,7 +98,12 @@ public class ScoreboardActivity extends AppCompatActivity {
         //set name headers
         for(int i = 0; i < numPlayers; i++ ){
             TextView name_lbl = new TextView(this);
-            name_lbl.setText(currentGame.players[i].name);
+            if(currentGame.players[i].name == "") {
+                name_lbl.setText("Player " + Integer.toString(i + 1));
+            }
+            else {
+                name_lbl.setText(currentGame.players[i].name);
+            }
             name_lbl.setTypeface(null, Typeface.BOLD);
             name_lbl.setGravity(Gravity.CENTER);
             nameRow.addView(name_lbl);

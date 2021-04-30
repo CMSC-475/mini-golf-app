@@ -21,7 +21,7 @@ import java.util.ArrayList;
 
 
 public class NewGameActivity extends AppCompatActivity {
-    int numPlayers, numHoles; //TODO: set this properly later
+    int numPlayers, numHoles = 9; //TODO: set this properly later
     TextView display;
     //    EditText playerNames;
     LinearLayout linearLayout;
