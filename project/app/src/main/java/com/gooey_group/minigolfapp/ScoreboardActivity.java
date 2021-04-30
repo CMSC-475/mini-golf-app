@@ -201,7 +201,14 @@ public class ScoreboardActivity extends AppCompatActivity {
 
                 TextView name_lbl = new TextView(this);
                 if(j < numPlayers) {
-                    name_lbl.setText(currentGame.players[j].name);
+
+                    if(currentGame.players[j].name == "") {
+                        name_lbl.setText("Player " + Integer.toString(j+1));
+                    }
+                    else {
+                        name_lbl.setText(currentGame.players[j].name);
+                    }
+
                 }
                 name_lbl.setTypeface(null, Typeface.BOLD);
                 name_lbl.setGravity(Gravity.CENTER);
