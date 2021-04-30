@@ -136,6 +136,11 @@ public class ScoreboardActivity extends AppCompatActivity {
         int duration = Toast.LENGTH_LONG;
 
         Toast toast = Toast.makeText(context, msg, duration);
+        //toast.setGravity(Gravity.CENTER_HORIZONTAL|Gravity.CENTER_VERTICAL, 0, 0);
+        /*View toastView = toast.getView();
+        TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
+        toastMessage.setCompoundDrawablePadding(16);*/
+
         toast.show();
 
 
@@ -235,7 +240,15 @@ public class ScoreboardActivity extends AppCompatActivity {
             public void onSwipeRight() {
                 if (currentPageGlobal != 1) { //can still go back
                     currentPageGlobal -= 1;
-                    Toast.makeText(ScoreboardActivity.this, "Page" + currentPageGlobal, Toast.LENGTH_SHORT).show();
+
+                    Context context = getApplicationContext();
+                    CharSequence msg = "Page " + currentPageGlobal;
+                    int duration = Toast.LENGTH_SHORT;
+
+                    Toast toast = Toast.makeText(context, msg, duration);
+                    toast.setGravity(Gravity.TOP, 0, 200);
+
+                    toast.show();
 
                     //put proper heading
                     headerRow.removeAllViews();
@@ -249,8 +262,15 @@ public class ScoreboardActivity extends AppCompatActivity {
             public void onSwipeLeft() {
                 if(currentPageGlobal < numTables) {//can still go forward
                     currentPageGlobal += 1;
-                    Toast.makeText(ScoreboardActivity.this, "Page" + currentPageGlobal, Toast.LENGTH_SHORT).show();
 
+                    Context context = getApplicationContext();
+                    CharSequence msg = "Page " + currentPageGlobal;
+                    int duration = Toast.LENGTH_SHORT;
+
+                    Toast toast = Toast.makeText(context, msg, duration);
+                    toast.setGravity(Gravity.TOP|Gravity.CENTER_HORIZONTAL, 0, 200);
+
+                    toast.show();
                     //put proper heading
                     headerRow.removeAllViews();
                     headerRow.addView(headerRows[currentPageGlobal - 1]);
@@ -345,14 +365,14 @@ public class ScoreboardActivity extends AppCompatActivity {
                     scoreRows[i].getChildAt(j).setVisibility(View.VISIBLE);
                 }
 
-                //hide 1, 2, 3
-                for (int j = 1; j<= 3 ; j++) {
+                //hide index 1, 2, 3
+                for (int j = 1; j <= 3 ; j++) {
                     scoreRows[i].getChildAt(j).setVisibility(View.GONE);
                 }
 
-                if(numPlayers >=8) {
+                if(numPlayers >= 7) {
                     //hide everything after 2nd pg
-                    for (int j = 8; j < numPlayers; j++) {
+                    for (int j = 7; j <= numPlayers; j++) {
                         scoreRows[i].getChildAt(j).setVisibility(View.GONE);
                     }
                 }
